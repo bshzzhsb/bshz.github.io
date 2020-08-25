@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://hsblock.github.io/sitemap.xml
+Host: https://hsblock.github.io
