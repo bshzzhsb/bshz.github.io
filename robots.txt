@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://hsblock.github.io/sitemap.xml
-Host: https://hsblock.github.io
+Sitemap: https://blog.bshz.xyz/sitemap.xml
+Host: https://blog.bshz.xyz
