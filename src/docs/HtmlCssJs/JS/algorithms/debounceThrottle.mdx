@@ -1,0 +1,38 @@
+---
+title: 节流防抖
+author: bshz
+excerpt: debounce throttle 节流 防抖
+date: "2020-08-26"
+last-modified: "2020-08-26"
+draft: false
+---
+
+```js
+function debounce(cb) {
+  var timer = null;
+  return function() {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      cb.apply(this, arguments);
+    }, 1000)
+  }
+}
+```
+
+<Debounce />
+
+```js
+function throttle(cb) {
+  let canRun = true;
+  return function() {
+    if (!canRun) return;
+    canRun = false;
+    setTimeout(function() {
+      cb.apply(this, arguments);
+      canRun = true;
+    }, 500);
+  }
+}
+```
+
+<Throttle />
