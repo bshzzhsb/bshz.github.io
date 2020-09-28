@@ -1,0 +1,25 @@
+- title: Index
+  key: docs
+  disableAccordions: false
+  items:
+    - title: ML and DL
+      items:
+        - title: NNDL book
+          items:
+            - title: 2-机器学习概述
+              link: /MLAndDL/NNDLBook/2-机器学习概述
+            - title: 3-线性模型
+              link: /MLAndDL/NNDLBook/3-线性模型
+    - title: HTML/CSS/JS
+      items:
+        - title: JS
+          items:
+<<<<<<< HEAD
+            - title: 经典算法
+=======
+            - title: algorithms
+>>>>>>> 0e6483fd369450b3735eee43d97a59839e6c9a3f
+              items:
+                - title: 节流防抖
+                  link: /HtmlCssJs/JS/algorithms/debounceThrottle
+        
