@@ -6,8 +6,8 @@ function Container({ children, withSidebar=true, overrideCSS }) {
     <div sx={{
       maxWidth: `1600px`,
       mx: `auto`,
-      px: 4,
-      py: 8,
+      px: `2em`,
+      py: `4em`,
       position: `relative`,
       ...overrideCSS,
     }}>

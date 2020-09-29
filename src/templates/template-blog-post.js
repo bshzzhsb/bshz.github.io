@@ -1,16 +1,39 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import React from "react"
 import { graphql } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/layout"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const { data: { mdx: post } } = this.props
+    const { data: { mdx: post, site } } = this.props
     console.log(this.props)
 
     return (
       <Layout location={this.props.location}>
-        <h1>{ post.frontmatter.title }</h1>
+        <article>
+          <h1>{post.frontmatter.title}</h1>
+          <span sx={{
+            fontFamily: t => `${t.fonts.dancingScript}`,
+            mb: `2rem`,
+          }}>
+            {site.siteMetadata.author.name} &nbsp; {post.frontmatter.date}
+          </span>
+          <section>
+            <MDXRenderer>{ post.body }</MDXRenderer>
+            {post.frontmatter.last_modified &&
+              <p sx={{
+                textAlign: `right`,
+                fontSize: `0.8rem`,
+                fontFamily: t => `${t.fonts.dancingScript}`,
+              }}>
+                {`last modified ${post.frontmatter.last_modified}`}
+              </p>
+            }
+          </section>
+        </article>
       </Layout>
     )
   }

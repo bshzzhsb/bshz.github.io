@@ -1,0 +1,1 @@
+export { theme as default } from '../utils/styles/bshz-design-tokens/theme-bshz'

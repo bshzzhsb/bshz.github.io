@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "博思何在",
+    siteUrl: "https://blog.bshz.xyz",
     description: `There are things about Machine Learning, Deep Learning, Front-End and anything I am interested in.`,
     author: {
       name: `hsblock`,
