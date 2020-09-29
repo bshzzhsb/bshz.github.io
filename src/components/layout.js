@@ -36,6 +36,8 @@ function Layout({ children, location, mdxTitle, ...props }) {
         <Header mdxTitle={mdxTitle} siteTitle={data.site.siteMetadata.title} />
         <StickyResponsiveSidebar
           itemList={itemList.items}
+          location={location}
+          mdxTitle={mdxTitle}
         />
         <Container withSidebar={props.withSidebar}>
           <main>{children}</main>

@@ -2,16 +2,34 @@
 import { jsx } from "theme-ui"
 import React from "react"
 
+import Item from "./item"
+import getActiveItemParents from "../../utils/sidebar/get-active-item-parents"
+import getActiveItem from "../../utils/sidebar/get-active-item"
+
 const SidebarContext = React.createContext({})
 export function useSidebarContext() {
   return React.useContext(SidebarContext)
 }
 
-function Sidebar({ title, location, itemList }) {
+function Sidebar({ mdxTitle, location, itemList }) {
   const scrollRef = React.useRef(null)
-  // TODO
+
+  const activeItem = React.useMemo(
+    () => getActiveItem(itemList, location),
+    [itemList, location]
+  )
+
+  const activeItemParents = React.useMemo(
+    () => getActiveItemParents(itemList, activeItem),
+    [itemList, activeItem]
+  )
+
+  console.log(activeItem, activeItemParents)
+
   const context = React.useMemo(() => {
-    return {}
+    return {
+
+    };
   }, [])
 
   return (
@@ -28,10 +46,12 @@ function Sidebar({ title, location, itemList }) {
               px: `6rem`,
             }}
           >
-            { title }
+            { mdxTitle }
           </h3>
           <ul>
-            { JSON.stringify(itemList) }
+            {itemList.map(item => (
+              <Item item={item} />
+            ))}
           </ul>
         </nav>
       </section>

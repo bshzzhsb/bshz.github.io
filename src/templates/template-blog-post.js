@@ -9,10 +9,12 @@ import Layout from "../components/layout"
 class BlogPostTemplate extends React.Component {
   render() {
     const { data: { mdx: post, site } } = this.props
-    console.log(this.props)
 
     return (
-      <Layout location={this.props.location}>
+      <Layout
+        location={this.props.location}
+        mdxTitle={post.frontmatter.title}
+      >
         <article>
           <h1>{post.frontmatter.title}</h1>
           <span sx={{
