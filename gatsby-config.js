@@ -28,7 +28,25 @@ module.exports = {
       options: {
         extension: [`.md`, `.mdx`],
         gatsbyRemarkPlugins: [
-
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {
+                env: `bash`,
+                es6: `js`,
+                gql: `graphql`,
+                mdx: `markdown`,
+              }
+            }
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            }
+          },
         ],
         remarkPlugins: [],
       }
@@ -40,5 +58,6 @@ module.exports = {
       options: {},
     },
     `gatsby-plugin-theme-ui`,
+    `gatsby-transformer-yaml`,
   ],
 }
