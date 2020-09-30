@@ -68,10 +68,12 @@ const Title = ({ item, uid }) => {
         position: `relative`,
         textAlign: `left`,
         width: `100%`,
-        bgColor: `transparent`,
         border: 0,
         cursor: `pointer`,
         minHeight: `40px`,
+        "&:hover": {
+          bg: t => `${t.colors.blue[10]}`,
+        },
       }}
       onClick={() => onSectionTitleClick(item)}
     >
@@ -128,6 +130,13 @@ const SplitTitle = ({ itemRef, item, uid }) => {
           bottom: 0,
           width: `40px`,
           zIndex: 1,
+          "&:hover": {
+            bg: t => `${t.colors.blue[10]}`,
+            "&:before": {
+              transform: `scale(1)`,
+              backgroundColor: t => `${t.colors.link.color}`,
+            },
+          },
         }}
         onClick={() => onSectionTitleClick(item)}
       >

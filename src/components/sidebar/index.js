@@ -18,7 +18,7 @@ class StickyResponsiveSidebar extends React.Component {
           borderStyle: `none solid none none`,
           borderWidth: `0 1px 0 0`,
           borderImage: `none 100% / 1 / 0 stretch`,
-          borderColor: t => `${t.colors.ui.border}`,
+          borderColor: t => `${t.colors.ui.border.subtle}`,
           position: `fixed`,
           opacity: 0,
           pointerEvents: `none`,

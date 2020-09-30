@@ -7,7 +7,7 @@ import { useSidebarContext } from "./sidebar"
 
 function ItemLink({ item, overrideCSS }) {
   const { onLinkClick, getItemState } = useSidebarContext()
-  const { isActive, inActiveTree } = getItemState(item)
+  const { isActive, inActiveTree, isExpanded } = getItemState(item)
   const level = item.level;
   const indent = indention(level+1);
 
@@ -29,13 +29,23 @@ function ItemLink({ item, overrideCSS }) {
           textDecoration: `none`,
           width: `100%`,
           zIndex: 1,
+          fontSize: `14px`,
+          color: isExpanded ? t => `${t.colors.blue[60]}` : t => `${t.colors.text}`,
           "&&": {
             border: 0,
             ...(inActiveTree && {
               color: t => `${t.colors.link.color}`,
-              fontWeight: t => `${t.fontWeights.semiBold}`
+              fontWeight: t => `${t.fontWeights.semiBold}`,
+              background: t => `${console.log(t)}`,
             }),
             ...overrideCSS,
+          },
+          "&:hover": {
+            bg: t => `${t.colors.blue[10]}`,
+            "&:before": {
+              transform: `scale(1)`,
+              backgroundColor: t => `${t.colors.link.color}`,
+            }
           },
           "&:before, &:after": {
             content: `''`,
@@ -46,18 +56,21 @@ function ItemLink({ item, overrideCSS }) {
             height: `8px`,
             position: `absolute`,
             transition: t => `all ${t.transition.speed.default} ${t.transition.curve.default}`,
-            width: `8px`,
           },
           "&:before": {
-            bgColor: isActive && (t => `${t.colors.link.color}`),
+            backgroundColor: isActive && (t => `${t.colors.link.color}`),
             borderRadius: `50%`,
-            transform: isActive ? `scale(1)` : `scale(0.1)`,
+            transform: isActive ? `scale(1)` : `scale(0)`,
+            width: `8px`,
+            left: `10px`,
           },
           "&:after": {
-            bgColor: t => `${t.colors.link.color}`,
-            borderRadius: `50%`,
+            backgroundColor: t => `${t.colors.link.color}`,
+            borderTopRightRadius: `4px`,
+            borderBottomRightRadius: `4px`,
             opacity: isActive ? 1 : 0,
-            width: isActive ? `40px` : 0,
+            width: isActive ? `20px` : 0,
+            left: `0px`,
           }
         }}
         onClick={onLinkClick}

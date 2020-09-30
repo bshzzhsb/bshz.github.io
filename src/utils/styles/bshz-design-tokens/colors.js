@@ -156,9 +156,9 @@ export const colors = {
     },
   },
   link: {
-    color: palette.purple[50],
-    border: palette.purple[30],
-    hoverBorder: palette.purple[50],
+    color: palette.blue[50],
+    border: palette.blue[30],
+    hoverBorder: palette.blue[50],
   },
   text: {
     header: palette.black,

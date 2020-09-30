@@ -14,7 +14,7 @@ function Accordion({ itemRef, item }) {
     <li
       sx={{
         position: `relative`,
-        bg: item.level === 0 && inActiveTree && `rgba(241, 222, 250, 0.15)`,
+        bg: item.level === 0 && inActiveTree && (t => `${t.colors.blue[5]}`),
         transition: t => `all ${t.transition.speed.fast} ${t.transition.curve.default}`,
         mt: t => item.level === 0 && `${t.space[4]}`,
         ...(item.level === 0 && {
@@ -23,7 +23,7 @@ function Accordion({ itemRef, item }) {
             position: `absolute`,
             borderTopWidth: `1px`,
             borderTopStyle: `solid`,
-            borderColor: t => `${t.colors.ui.border}`,
+            borderColor: t => `${t.colors.ui.border.subtle}`,
             left: isExpanded && inActiveTree ? 0 : 6,
             right: 0,
             top: 0,
