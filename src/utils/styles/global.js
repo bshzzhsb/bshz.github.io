@@ -249,6 +249,12 @@ export const globalStyles = t => {
     iframe: {
       border: 0,
     },
+    ul: {
+      paddingLeft: 0,
+    },
+    li: {
+      listStyle: `none`,
+    },
     "th, td": {
       borderColor: t.colors.ui.border,
     },

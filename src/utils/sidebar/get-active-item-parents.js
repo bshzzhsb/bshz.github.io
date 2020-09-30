@@ -1,4 +1,4 @@
-//
+// 递归查找 title 为 parentTitle 的 item
 const getParent = (sections, parentTitle) => {
   for (let section of sections) {
     if (section.title === parentTitle) {
@@ -13,6 +13,7 @@ const getParent = (sections, parentTitle) => {
   }
 }
 
+// 查找 activeItem 的所有父级结点
 const getActiveItemParents = (itemList, activeItem, activeItemParents = []) => {
   if (activeItem.parentTitle) {
     const bar = getParent(itemList, activeItem.parentTitle)

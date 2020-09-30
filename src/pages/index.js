@@ -1,10 +1,11 @@
 import React from "react"
 import Layout from "../components/layout"
 
-export default function Home() {
+export default function Home({ location }) {
+  console.log(location)
   return (
-    <Layout>
-      <div>Hello world!</div>
+    <Layout location={location}>
+      <div>Hello world!Hello world!Hello world!Hello world!Hello world!Hello world!Hello world!</div>
     </Layout>
   )
 }
