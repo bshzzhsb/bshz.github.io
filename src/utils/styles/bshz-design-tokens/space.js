@@ -5,4 +5,4 @@ const s = () => {
   return { space, spacePx, spaceRem };
 }
 
-export const { space, spacePx, spaceRem } = s()
+export const { spaceRem: space, space: spaceRaw, spacePx } = s()

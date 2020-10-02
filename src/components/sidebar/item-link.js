@@ -41,6 +41,7 @@ function ItemLink({ item, overrideCSS }) {
             ...overrideCSS,
           },
           "&:hover": {
+            color: t => `${t.colors.blue[60]}`,
             bg: t => `${t.colors.blue[10]}`,
             "&:before": {
               transform: `scale(1)`,

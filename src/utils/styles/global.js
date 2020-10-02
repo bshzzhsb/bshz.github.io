@@ -73,7 +73,7 @@ const gatsbyHighlightLanguageBadges = t => {
       borderRadius: `0 0 ${t.radii[2]} ${t.radii[2]}`,
       color: t.colors.grey[90],
       fontSize: t.fontSizes[0],
-      fontFamily: t.fonts.monospace,
+      fontFamily: t.fontsLists.monospace,
       letterSpacing: t.letterSpacings.tracked,
       lineHeight: t.lineHeights.solid,
       padding: `${t.space[1]} ${t.space[2]}`,
@@ -255,6 +255,15 @@ export const globalStyles = t => {
     li: {
       listStyle: `none`,
     },
+    pre: {
+      overflow: `auto`,
+      padding: `1.5rem 0`,
+      fontSize: `0.85rem`,
+      margin: `0 0 1.5rem 0`
+    },
+    code: {
+      padding: `0 1.5rem`,
+    },
     "th, td": {
       borderColor: t.colors.ui.border,
     },
@@ -267,11 +276,11 @@ export const globalStyles = t => {
     },
     "tt, code, kbd": {
       background: t.colors.code.bg,
-      paddingTop: `0.2em`,
-      paddingBottom: `0.2em`,
+      paddingTop: `0`,
+      paddingBottom: `0`,
     },
     "tt, code, kbd, .gatsby-code-title": {
-      fontFamily: t.fonts.monospace,
+      fontFamily: t.fontsLists.monospace,
       fontSize: `90%`,
       fontVariant: `none`,
       WebkitFontFeatureSettings: `"clig" 0, "calt" 0`,
@@ -344,7 +353,7 @@ export const globalStyles = t => {
       background: t.colors.code.bg,
       borderBottom: `1px solid ${t.colors.code.border}`,
       color: t.colors.code.text,
-      padding: `${t.space[5]} ${t.space[6]} ${t.space[4]}`,
+      padding: `${t.space[4]} ${t.space[6]} ${t.space[3]}`,
       fontSize: t.fontSizes[0],
       marginTop: t.space[2],
     },

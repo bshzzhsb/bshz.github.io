@@ -16,7 +16,6 @@ function Accordion({ itemRef, item }) {
         position: `relative`,
         bg: item.level === 0 && inActiveTree && (t => `${t.colors.blue[5]}`),
         transition: t => `all ${t.transition.speed.fast} ${t.transition.curve.default}`,
-        mt: t => item.level === 0 && `${t.space[4]}`,
         ...(item.level === 0 && {
           "::before": {
             content: `''`,

@@ -29,19 +29,6 @@ module.exports = {
         extension: [`.md`, `.mdx`],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: null,
-              aliases: {
-                env: `bash`,
-                es6: `js`,
-                gql: `graphql`,
-                mdx: `markdown`,
-              }
-            }
-          },
-          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
