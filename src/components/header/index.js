@@ -32,7 +32,12 @@ function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, overrideCSS})
       }}
     >
       <Breadcrumb siteTitle={siteTitle} mdxTitle={mdxTitle} />
-      <div>
+      <div
+        sx={{
+          display: `flex`,
+          alignItems: `center`,
+        }}
+      >
         <Search collapse indices={searchIndices} />
         <Hamburger
           showSidebar={showSidebar}

@@ -170,6 +170,7 @@ export const colors = {
     border: palette.grey[30],
     focusBorder: palette.orange[40],
     focusBoxShadow: palette.orange[20],
+    placeholder: palette.grey[40],
   },
   code: {
     bgInline: "#fbf2e9",

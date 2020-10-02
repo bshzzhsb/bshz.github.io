@@ -43,5 +43,5 @@ const f = () => {
   return { fonts, fontsStrings }
 }
 
-export const { fonts, fontsStrings: fontsLists } = f()
+export const { fonts: fontsLists, fontsStrings: fonts } = f()
 

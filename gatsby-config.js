@@ -3,6 +3,7 @@ const queries = require("./src/utils/algolia")
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
+console.log(process.env.ALGOLIA_ADMIN_KEY)
 
 module.exports = {
   siteMetadata: {
@@ -61,7 +62,7 @@ module.exports = {
         queries,
         chunkSize: 20000,
         enablePartialUpdates: false,
-        matchFields: ['slug', 'modified']
+        matchFields: ['content'],
       },
     },
   ],

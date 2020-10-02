@@ -19,12 +19,19 @@ const Results = connectStateResults(
   )
 )
 
-const clickOutSide = (ref, handler, events) => {
-  if (!events) {
-    events = [`mousedown`, `touchstart`];
-  }
+function Search({ indices, collapse, hitsAsGrid }) {
+  const ref = React.useRef();
+  const [query, setQuery] = React.useState("");
+  const [focus, setFocus] = React.useState(false)
+  const searchClient = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_KEY);
+
+  const events = [`mousedown`, `touchstart`];
   const detectClickOutside = event => {
-    ref && ref.current && !ref.current.contains(events.target) && handler()
+    console.log(event, ref)
+    if (ref && ref.current && !ref.current.contains(event.target)) {
+      console.log("false");
+      setFocus(false);
+    }
   }
   React.useEffect(() => {
     for (const event of events) {
@@ -36,15 +43,6 @@ const clickOutSide = (ref, handler, events) => {
       }
     }
   })
-}
-
-function Search({ indices, collapse, hitsAsGrid }) {
-  const ref = React.createRef();
-  const [query, setQuery] = React.useState("");
-  const [focus, setFocus] = React.useState(false)
-
-  clickOutSide(ref, () => setFocus(false))
-  const searchClient = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_KEY);
 
   return (
     <InstantSearch
@@ -53,11 +51,13 @@ function Search({ indices, collapse, hitsAsGrid }) {
       onSearchStateChange={({ query }) => setQuery(query)}
     >
       <div
+        ref={ref}
         sx={{
           display: `flex`,
           position: `relative`,
           mb: 0,
           ml: `auto`,
+          mr: `1rem`,
         }}
       >
         <Input
@@ -66,8 +66,20 @@ function Search({ indices, collapse, hitsAsGrid }) {
         />
         <div
           sx={{
-            display: focus && query.length > 0 ? `grid` : `none`,
+            display: focus && query && query.length > 0 ? `grid` : `none`,
+            maxHeight: `80vh`,
             overflow: `auto`,
+            zIndex: 2,
+            WebkitOverflowScrolling: `touch`,
+            position: `absolute`,
+            right: 0,
+            top: `calc(100% + 0.5rem)`,
+            width: `80vw`,
+            maxWidth: `30rem`,
+            boxShadow: `0 0 5px 0`,
+            p: `0.7rem  1rem 0.4rem`,
+            bg: t => t.colors.white,
+            borderRadius: `4px`,
           }}
         >
           {indices.map(({ name, title, hitComp}) => (
