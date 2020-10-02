@@ -20,20 +20,29 @@ class StickyResponsiveSidebar extends React.Component {
           borderImage: `none 100% / 1 / 0 stretch`,
           borderColor: t => `${t.colors.ui.border.subtle}`,
           position: `fixed`,
-          opacity: 0,
-          pointerEvents: `none`,
+          zIndex: 99,
+          opacity: this.props.showSidebar ? 1: 0,
+          pointerEvents: this.props.showSidebar ? `auto` : `none`,
           height: `calc(-3.2rem + 100vh)`,
+          background: `#fff`,
+          transform: this.props.showSidebar ? `translateX(0)` : "translateX(-16rem)",
+          transition: t => `transform ${t.transition.speed.default} ${t.transition.curve.default}, 
+                      opacity ${t.transition.speed.default} ${t.transition.curve.default}`,
           [mediaQueries.md]: {
             opacity: 1,
             top: `3.2rem`,
             pointerEvents: `auto`,
+            transform: `none`,
           },
           ...this.props.overrideCSS,
         }}
       >
-        <Sidebar
-          {...this.props}
-        />
+        <div
+        >
+          <Sidebar
+            {...this.props}
+          />
+        </div>
       </div>
     )
   }

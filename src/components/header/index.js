@@ -4,7 +4,7 @@ import { jsx } from "theme-ui"
 import Hamburger from "./hamburger"
 import Breadcrumb from "./breadcrumb"
 
-function Header({siteTitle, mdxTitle, overrideCSS}) {
+function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, overrideCSS}) {
 
   return (
     <header
@@ -22,7 +22,12 @@ function Header({siteTitle, mdxTitle, overrideCSS}) {
       }}
     >
       <Breadcrumb siteTitle={siteTitle} mdxTitle={mdxTitle} />
-      <Hamburger />
+      <div>
+        <Hamburger
+          showSidebar={showSidebar}
+          setShowSidebar={setShowSidebar}
+        />
+      </div>
     </header>
   )
 }

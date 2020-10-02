@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import React from "react"
 import { Global } from "@emotion/core"
 import { graphql, useStaticQuery } from "gatsby"
 
@@ -22,6 +23,8 @@ function Layout({ children, location, mdxTitle, ...props }) {
       }
     `
   )
+
+  const [showSidebar, setShowSidebar] = React.useState(false);
 
   const itemList = getItemList()
 
@@ -47,6 +50,8 @@ function Layout({ children, location, mdxTitle, ...props }) {
         <Header
           mdxTitle={mdxTitle}
           siteTitle={data.site.siteMetadata.title}
+          showSidebar={showSidebar}
+          setShowSidebar={setShowSidebar}
           overrideCSS={{
             width: [`100%`, `100%`,`100%`, `750px`, `980px`, `1170px`],
           }}
@@ -61,6 +66,7 @@ function Layout({ children, location, mdxTitle, ...props }) {
             itemList={itemList.items}
             location={location}
             mdxTitle={mdxTitle}
+            showSidebar={showSidebar}
             overrideCSS={{
               width: `16rem`,
             }}
