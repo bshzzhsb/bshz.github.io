@@ -9,7 +9,7 @@ const fs = () => {
 }
 
 export const {
-  scale: fontSizes,
+  scaleRem: fontSizes,
   scalePx: fontSizesPx,
-  scaleRem: fontSizesRaw
+  scale: fontSizesRaw,
 } = fs()

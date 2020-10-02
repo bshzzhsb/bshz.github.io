@@ -1,3 +1,9 @@
+const queries = require("./src/utils/algolia")
+
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: "博思何在",
@@ -46,5 +52,17 @@ module.exports = {
     },
     `gatsby-plugin-theme-ui`,
     `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        queries,
+        chunkSize: 20000,
+        enablePartialUpdates: false,
+        matchFields: ['slug', 'modified']
+      },
+    },
   ],
 }

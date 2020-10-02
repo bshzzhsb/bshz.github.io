@@ -223,6 +223,7 @@ export const globalStyles = t => {
       textDecoration: `none`,
     },
     h1: {
+      fontSize: t.fontSizes[7],
       fontWeight: t.fontWeights.semibold,
     },
     "h1, h2, h3, h4, h5, h6": {

@@ -3,6 +3,16 @@ import { jsx } from "theme-ui"
 
 import Hamburger from "./hamburger"
 import Breadcrumb from "./breadcrumb"
+import Search from "../search"
+import config from "../../../config"
+
+const searchIndices = [
+  {
+    name: `${config.search.indexName}`,
+    title: `Results`,
+    hitComp: `PostHit`,
+  }
+]
 
 function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, overrideCSS}) {
 
@@ -23,6 +33,7 @@ function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, overrideCSS})
     >
       <Breadcrumb siteTitle={siteTitle} mdxTitle={mdxTitle} />
       <div>
+        <Search collapse indices={searchIndices} />
         <Hamburger
           showSidebar={showSidebar}
           setShowSidebar={setShowSidebar}

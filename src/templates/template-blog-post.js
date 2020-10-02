@@ -16,7 +16,13 @@ class BlogPostTemplate extends React.Component {
         mdxTitle={post.frontmatter.title}
       >
         <article>
-          <h1>{post.frontmatter.title}</h1>
+          <h1
+            sx={{
+              fontFamily: t => `${t.fonts.noto}`
+            }}
+          >
+            {post.frontmatter.title}
+          </h1>
           <span sx={{
             fontFamily: t => `${t.fonts.dancingScript}`,
             mb: `2rem`,
