@@ -19,14 +19,14 @@ function generatePage(numPages, currentPage) {
   if (pageArr[pageArr.length - 1] < numPages - 1) {
     pageArr.push("...");
   }
-  pageArr.push(numPages);
+  if (numPages !== 1) {
+    pageArr.push(numPages);
+  }
   return pageArr;
 }
 
-function Paginaton({ context }) {
-  // const { numPages, currentPage } = context;
-  const currentPage  = 2
-  const numPages = 5
+function Pagination({ context }) {
+  const { numPages, currentPage } = context;
   let pageArr = generatePage(numPages, currentPage);
 
   return (
@@ -56,7 +56,7 @@ function Paginaton({ context }) {
               pageNum={item}
             /> :
             <PaginationItem
-              to={`/blog/page/${item}/`}
+              to={item === 1 ? `/blog/` : `/blog/page/${item}/`}
               pageNum={item}
               active={currentPage === item}
             />
@@ -73,4 +73,4 @@ function Paginaton({ context }) {
   )
 }
 
-export default Paginaton
+export default Pagination

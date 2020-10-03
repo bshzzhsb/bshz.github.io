@@ -74,6 +74,7 @@ function Layout({ children, location, mdxTitle, ...props }) {
           <div
             sx={{
               flex: 1,
+              overflow: `hidden`,
               [mediaQueries.md]: {
                 pl: `16rem`,
               }
