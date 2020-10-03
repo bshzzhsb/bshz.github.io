@@ -116,7 +116,7 @@ const whiteRGB = '255, 255, 255'
 
 export const colors = {
   ...palette,
-  gatsby: palette.purple[60],
+  // gatsby: palette.purple[60],
   // legacy shortcuts
   // most of these should be refactored to role-based tokens as we flesh those out
   lilac: palette.purple[50],

@@ -73,7 +73,7 @@ const gatsbyHighlightLanguageBadges = t => {
       borderRadius: `0 0 ${t.radii[2]} ${t.radii[2]}`,
       color: t.colors.grey[90],
       fontSize: t.fontSizes[0],
-      fontFamily: t.fontsLists.monospace,
+      fontFamily: t.fonts.monospace,
       letterSpacing: t.letterSpacings.tracked,
       lineHeight: t.lineHeights.solid,
       padding: `${t.space[1]} ${t.space[2]}`,
@@ -217,7 +217,7 @@ export const globalStyles = t => {
       MozOsxFontSmoothing: `grayscale`,
       textRendering: `optimizelegibility`,
       WebkitFontSmoothing: `antialiased`,
-      font: `100%/1.5 ${t.fontsLists.body}`
+      font: `100%/1.5 ${t.fonts.body}`
     },
     a: {
       textDecoration: `none`,
@@ -281,7 +281,7 @@ export const globalStyles = t => {
       paddingBottom: `0`,
     },
     "tt, code, kbd, .gatsby-code-title": {
-      fontFamily: t.fontsLists.monospace,
+      fontFamily: t.fonts.monospace,
       fontSize: `90%`,
       fontVariant: `none`,
       WebkitFontFeatureSettings: `"clig" 0, "calt" 0`,

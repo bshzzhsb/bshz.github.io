@@ -1,17 +1,48 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
+import BlogPostPreviewItem from "../components/blog-post-preview-item"
+import Pagination from "../components/pagination"
 
 class BlogListTemplate extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props)
+  }
   render() {
     const { edges: allMdx } = this.props.data.allMdx;
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         {allMdx.map(({ node }, index) => (
-          node.frontmatter.title
+          <BlogPostPreviewItem
+            post={node}
+            key={node.fields.slug}
+            sx={{
+              p: 8,
+              mx: 0,
+              mb: t => index === allMdx.length - 1 ? t.space[8] : 0,
+              boxShadow: t => t.shadows.raised,
+              bg: t => t.colors.background,
+              borderRadius: `4px`,
+              border: 0,
+              transition: t =>
+                `transform ${t.transition.default}, box-shadow ${t.transition.default}`,
+              "&:hover": {
+                transform: t => `translateY(-${t.space[1]})`,
+                boxShadow: t => t.shadows.overlay,
+              },
+              "&:active": {
+                boxShadow: t => t.shadows.overlay,
+                transform: `translateY(0)`,
+              },
+            }}
+          />
         ))}
+        <Pagination context={this.props.pageContext} />
       </Layout>
     )
   }
