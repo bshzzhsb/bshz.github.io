@@ -5,8 +5,21 @@ import { connectSearchBox } from "react-instantsearch-dom"
 import SearchIcon from "./search-icon"
 import { themedInput } from "../../utils/styles"
 
+const debounce = (refine) => {
+  let timer = null;
+  return function(value) {
+    console.log(value);
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      refine.call(this, value)
+    }, 500)
+  }
+}
+
 const Input = connectSearchBox(({ refine, ...rest }) => {
   const focused = rest.focus;
+  const debouncedRefine = debounce(refine)
+
   return (
     <form
       action=""
@@ -24,7 +37,7 @@ const Input = connectSearchBox(({ refine, ...rest }) => {
         htmlFor=""
         sx={{
           position: `relative`,
-          width: [focused ? `14rem` : `2rem`, focused ? `14rem` : `2rem`, null, `100%`, focused ? `14rem` : `2rem`, `100%`],
+          width: [focused ? `14rem` : `2rem`, null, null, null, null, `14rem`],
           transition: t =>
             `width ${t.transition.speed.default} ${t.transition.curve.default},
             padding ${t.transition.speed.default} ${t.transition.curve.default}`
@@ -34,10 +47,10 @@ const Input = connectSearchBox(({ refine, ...rest }) => {
           type="search"
           placeholder="Search"
           aria-label="Search"
-          onChange={e => refine(e.target.value)}
+          onChange={e => debouncedRefine(e.target.value)}
           sx={{
             ...themedInput,
-            pl: [`1rem`, null, null, focused ? `2rem` : `1rem`, 7],
+            pl: `2rem`,
             width: [`100%`, null, null, focused ? `14rem` : `2rem`, `100%`],
             transition: t =>
               `width ${t.transition.speed.default} ${t.transition.curve.default},

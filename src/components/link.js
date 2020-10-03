@@ -2,12 +2,12 @@
 import { jsx } from "theme-ui"
 import { Link as GatsbyLink } from "gatsby"
 
-const Link = ({ to, children, ...props }) => {
+const Link = ({ to, children, className }) => {
   if (to) {
     return (
       <GatsbyLink
         to={to}
-        {...props}
+        className={className}
         sx={{
           color: t => t.colors.text,
         }}
@@ -16,7 +16,7 @@ const Link = ({ to, children, ...props }) => {
       </GatsbyLink>
     )
   }
-  return <span {...props}>{ children }</span>
+  return <span className={className}>{ children }</span>
 }
 
 export default Link

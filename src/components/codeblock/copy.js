@@ -11,7 +11,6 @@ function Copy({ className, content, fileName, duration = 3000 }) {
   const label = copied
     ? `${fileName ? fileName + ` ` : ``}copied to clipboard`
     : `${fileName ? fileName + `: ` : ``}copy code to clipboard`
-  console.log(className)
 
   return (
     <button
@@ -31,8 +30,7 @@ function Copy({ className, content, fileName, duration = 3000 }) {
           cursor: `not-allowed`,
         },
         "&:not([disabled]):hover": {
-          bg: t => `${t.colors.purple[60]}`,
-          color: `white`,
+          bg: t => `${t.colors.grey[30]}`,
         },
         "&:active": {
           boxShadow: t => `${t.shadows.floating}`,

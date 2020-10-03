@@ -7,7 +7,7 @@ import { mediaQueries } from "../../utils/styles/bshz-design-tokens"
 
 class StickyResponsiveSidebar extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     console.log(props)
   }
 
@@ -21,20 +21,23 @@ class StickyResponsiveSidebar extends React.Component {
           borderColor: t => `${t.colors.ui.border.subtle}`,
           position: `fixed`,
           zIndex: 99,
-          opacity: this.props.showSidebar ? 1: 0,
+          opacity: this.props.showSidebar ? 1 : 0,
           pointerEvents: this.props.showSidebar ? `auto` : `none`,
           height: `calc(-3.2rem + 100vh)`,
           background: `#fff`,
           transform: this.props.showSidebar ? `translateX(0)` : "translateX(-16rem)",
-          transition: t => `transform ${t.transition.speed.default} ${t.transition.curve.default}, 
-                      opacity ${t.transition.speed.default} ${t.transition.curve.default}`,
+          boxShadow: t => t.shadows.floating,
+          transition: t =>
+            `transform ${t.transition.speed.default} ${t.transition.curve.default}, 
+            opacity ${t.transition.speed.default} ${t.transition.curve.default}`,
           [mediaQueries.md]: {
             opacity: 1,
             top: `3.2rem`,
             pointerEvents: `auto`,
             transform: `none`,
+            boxShadow: `none`,
           },
-          ...this.props.overrideCSS,
+          ...this.props.overrideCSS
         }}
       >
         <div
