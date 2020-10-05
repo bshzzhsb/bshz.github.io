@@ -43,7 +43,15 @@ function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, overrideCSS})
         }}
       >
         <Search collapse indices={searchIndices} />
-        <Link to={github} target="_blank"><FaGithub /></Link>
+        <Link
+          to={github}
+          target="_blank"
+          sx={{
+            mx: t => t.space[4],
+          }}
+        >
+          <FaGithub />
+        </Link>
         <Hamburger
           showSidebar={showSidebar}
           setShowSidebar={setShowSidebar}

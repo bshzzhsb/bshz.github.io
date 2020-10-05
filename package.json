@@ -7,6 +7,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "deploy": "gh-pages -d public -b master",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
@@ -60,6 +61,7 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
+    "gh-pages": "^3.1.0",
     "prettier": "2.1.1"
   },
   "repository": {

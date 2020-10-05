@@ -55,7 +55,7 @@ function Search({ indices, collapse, hitsAsGrid }) {
         sx={{
           display: `flex`,
           position: `relative`,
-          mr: `2rem`,
+          mx: t => t.space[4],
         }}
       >
         <Input
