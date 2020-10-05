@@ -253,9 +253,6 @@ export const globalStyles = t => {
     ul: {
       paddingLeft: 0,
     },
-    li: {
-      listStyle: `none`,
-    },
     pre: {
       overflow: `auto`,
       padding: `1.5rem 0`,

@@ -5,16 +5,28 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
+import Disqus from "../components/disqus"
+import PrevAndNext from "../components/prev-and-next"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const { data: { mdx: post, site } } = this.props
+    const {
+      pageContext: { prev, next },
+      data: { mdx: post, site },
+    } = this.props
+    const disqusConfig = {
+      url: `${site.siteMetadata.siteUrl+post.fields.slug}`,
+      identifier: post.id,
+      title: post.frontmatter.title,
+    }
 
     return (
       <Layout
         location={this.props.location}
         mdxTitle={post.frontmatter.title}
       >
+        <SEO title={post.frontmatter.title} />
         <article>
           <h1
             sx={{
@@ -41,6 +53,10 @@ class BlogPostTemplate extends React.Component {
               </p>
             }
           </section>
+          <div>
+            <PrevAndNext prev={prev} next={next} />
+          </div>
+          <Disqus disqusConfig={disqusConfig} />
         </article>
       </Layout>
     )

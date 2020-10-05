@@ -5,6 +5,7 @@ import { Global } from "@emotion/core"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Header from "./header"
+import Footer from "./footer"
 import Container from "./container"
 import StickyResponsiveSidebar from "./sidebar"
 import { globalStyles } from "../utils/styles/global"
@@ -75,6 +76,9 @@ function Layout({ children, location, mdxTitle, ...props }) {
             sx={{
               flex: 1,
               overflow: `hidden`,
+              display: `flex`,
+              flexDirection: `column`,
+              justifyContent: `space-between`,
               [mediaQueries.md]: {
                 pl: `16rem`,
               }
@@ -85,9 +89,9 @@ function Layout({ children, location, mdxTitle, ...props }) {
             >
               <main>{children}</main>
             </Container>
+            <Footer />
           </div>
         </div>
-        {/*// TODO: Footer*/}
       </div>
     </div>
   )

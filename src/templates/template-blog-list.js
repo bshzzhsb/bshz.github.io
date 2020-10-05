@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import BlogPostPreviewItem from "../components/blog-post-preview-item"
 import Pagination from "../components/pagination"
+import SEO from "../components/seo"
 
 class BlogListTemplate extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class BlogListTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location}>
+        <SEO title={`Blog | Page ${this.props.pageContext.currentPage}`} />
         {allMdx.map(({ node }, index) => (
           <BlogPostPreviewItem
             post={node}

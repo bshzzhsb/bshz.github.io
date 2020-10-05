@@ -36,6 +36,7 @@ function Accordion({ itemRef, item }) {
       />
       {isExpanded && (
         <ul
+          id={uid}
         >
           {item.items.map(subitem => (
             <Item

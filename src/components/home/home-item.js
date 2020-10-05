@@ -8,14 +8,13 @@ const HomeItem = ({ item }) => (
   <li
     sx={{
       borderRadius: t => t.radii[2],
-      width: `60vw`,
+      width: `20rem`,
       mr: t => t.space[6],
       "&:last-child": {
         mr: 0,
       },
       [mediaQueries.md]: {
         m: t => `0 ${t.space[6]} ${t.space[6]} 0`,
-        width: `20rem`,
       },
       [mediaQueries.lg]: {
         flexBasis: `45%`,

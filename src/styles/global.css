@@ -1,2 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+.katex-html {
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.mspace.newline {
+  padding: 0.5rem 0;
+}

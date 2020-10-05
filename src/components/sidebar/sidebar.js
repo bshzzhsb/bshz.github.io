@@ -99,7 +99,10 @@ function Sidebar({ mdxTitle, location, itemList }) {
           </h3>
           <ul
             sx={{
-              fontWeight: t => `${t.fontWeights.body}`
+              fontWeight: t => `${t.fontWeights.body}`,
+              "& li": {
+                listStyle: `none`,
+              },
             }}
           >
             {itemList.map(item => (

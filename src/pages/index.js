@@ -7,10 +7,12 @@ import Layout from "../components/layout"
 import Link from "../components/link"
 import HomeItemList from "../components/home/home-item-list"
 import homeItems from "../data/home-items"
+import SEO from "../components/seo"
 
 export default function Home({ location }) {
   return (
     <Layout location={location}>
+      <SEO />
       <div>
         <h1>
           Welcome!

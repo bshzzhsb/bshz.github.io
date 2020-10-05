@@ -38,11 +38,16 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 768,
+            }
+          },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`,
             }
           },
         ],
-        remarkPlugins: [],
       }
     },
     `gatsby-plugin-sharp`,
@@ -64,6 +69,43 @@ module.exports = {
         enablePartialUpdates: false,
         matchFields: ['content'],
       },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `博思何在`,
+        short_name: `博思何在`,
+        start_url: `/`,
+        background_color: `#6b37bf`,
+        theme_color: `#6b37bf`,
+        display: `standalone`,
+        icon: `src/assets/icons/maple.png`,
+        crossOrigin: `use-credentials`,
+      },
+    },
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `blue`,
+        showSpinner: false,
+      }
+    },
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: `https://blog.bshz.xyz`,
+        sitemap: `https://blog.bshz.xyz/sitemap.xml`,
+        policy: [{ userAgent: `*`, allow: `/` }]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `bshzzhsb`
+      }
     },
   ],
 }
