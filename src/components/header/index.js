@@ -1,10 +1,13 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import { FaGithub } from "react-icons/fa"
 
 import Hamburger from "./hamburger"
 import Breadcrumb from "./breadcrumb"
 import Search from "../search"
 import config from "../../../config"
+import Link from "../link"
+import useSiteMetadata from "../../hooks/use-site-metadata"
 
 const searchIndices = [
   {
@@ -15,6 +18,7 @@ const searchIndices = [
 ]
 
 function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, overrideCSS}) {
+  const { author: { github } } = useSiteMetadata()
 
   return (
     <header
@@ -39,6 +43,7 @@ function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, overrideCSS})
         }}
       >
         <Search collapse indices={searchIndices} />
+        <Link to={github} target="_blank"><FaGithub /></Link>
         <Hamburger
           showSidebar={showSidebar}
           setShowSidebar={setShowSidebar}

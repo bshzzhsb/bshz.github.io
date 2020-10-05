@@ -18,7 +18,7 @@ function SEO({ description, title, article }) {
   return (
     <Helmet
       title={seo.title}
-      titleTemplate={`%s - ${siteMetadata.title}`}
+      titleTemplate={title ? `%s - ${siteMetadata.title}` : `${seo.title}`}
     >
       <meta name="description" content={seo.description} />
       {(article ? true : null) && <meta property="og:type" content="article" />}

@@ -42,14 +42,14 @@ const SectionHeading = ({ children, item }) => {
       sx={{
         display: `flex`,
         alignItems: `center`,
-        letterSpacing: `0.3px`,
+        letterSpacing: `0.5px`,
         margin: 0,
         p: `0.5rem 2.5rem 0.5rem ${indent}`,
         fontSize: `14px`,
         color: isExpanded ? t => `${t.colors.blue[60]}` : ``,
         "&:hover": {
           color: t => `${t.colors.blue[60]}`,
-        }
+        },
       }}
     >
       {children}

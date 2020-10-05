@@ -7,8 +7,8 @@ function Container({ children, withSidebar=true, overrideCSS }) {
       maxWidth: `42rem`,
       width: `100%`,
       mx: `auto`,
-      px: `2rem`,
-      py: `1rem`,
+      px: t => t.space[8],
+      py: t => t.space[8],
       position: `relative`,
       ...overrideCSS,
     }}>

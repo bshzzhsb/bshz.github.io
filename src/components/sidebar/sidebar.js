@@ -3,6 +3,7 @@ import { jsx } from "theme-ui"
 import React from "react"
 
 import Item from "./item"
+import Link from "../link"
 import getActiveItemParents from "../../utils/sidebar/get-active-item-parents"
 import getActiveItem from "../../utils/sidebar/get-active-item"
 
@@ -37,6 +38,7 @@ function Sidebar({ mdxTitle, location, itemList }) {
     () => getActiveItem(itemList, location),
     [itemList, location]
   )
+  console.log(activeItem);
 
   const activeItemParents = React.useMemo(
     () => getActiveItemParents(itemList, activeItem),

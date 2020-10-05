@@ -29,7 +29,7 @@ function Pagination({ context }) {
   const { numPages, currentPage } = context;
   let pageArr = generatePage(numPages, currentPage);
 
-  return (
+  return numPages > 1 && (
     <div
       sx={{
         display: `flex`,

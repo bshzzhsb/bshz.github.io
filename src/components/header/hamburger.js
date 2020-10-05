@@ -7,7 +7,6 @@ const Line = {
   left: `25%`,
   width: `50%`,
   height: `2px`,
-  transform: `translateY(-1px)`,
   background: t => `${t.colors.blackFade[60]}`,
   borderRadius: `10px`,
   overflow: `hidden`,
@@ -42,21 +41,21 @@ function Hamburger({ showSidebar, setShowSidebar }) {
         <div
           sx={{
             ...Line,
-            top: `30%`,
+            top: `calc(30% - 1px)`,
             transform: showSidebar && `translateY(${w / 5}em) rotate(45deg)`,
           }}
         />
         <div
           sx={{
             ...Line,
-            top: `50%`,
+            top: `calc(50% - 1px)`,
             transform: showSidebar && `scale(0)`,
           }}
         />
         <div
           sx={{
             ...Line,
-            top: `70%`,
+            top: `calc(70% - 1px)`,
             transform: showSidebar && `translateY(-${w / 5}em) rotate(-45deg)`,
           }}
         />

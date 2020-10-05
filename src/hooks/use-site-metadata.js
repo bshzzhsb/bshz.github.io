@@ -10,6 +10,8 @@ function useSiteMetadata() {
           description
           author {
             name
+            summary
+            github
           }
         }
       }

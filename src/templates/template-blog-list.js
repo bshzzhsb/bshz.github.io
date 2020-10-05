@@ -26,7 +26,7 @@ class BlogListTemplate extends React.Component {
             sx={{
               p: 8,
               mx: 0,
-              mb: t => index === allMdx.length - 1 ? t.space[8] : 0,
+              mb: t => t.space[8],
               boxShadow: t => t.shadows.raised,
               bg: t => t.colors.background,
               borderRadius: `4px`,

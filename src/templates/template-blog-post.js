@@ -35,12 +35,12 @@ class BlogPostTemplate extends React.Component {
           >
             {post.frontmatter.title}
           </h1>
-          <span sx={{
+          <div sx={{
             fontFamily: t => `${t.fonts.dancingScript}`,
-            mb: `2rem`,
+            mb: t => t.space[4],
           }}>
             {site.siteMetadata.author.name} &nbsp; {post.frontmatter.date}
-          </span>
+          </div>
           <section>
             <MDXRenderer>{ post.body }</MDXRenderer>
             {post.frontmatter.last_modified &&

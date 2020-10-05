@@ -10,6 +10,7 @@ const HomeItem = ({ item }) => (
       borderRadius: t => t.radii[2],
       width: `20rem`,
       mr: t => t.space[6],
+      listStyle: `none`,
       "&:last-child": {
         mr: 0,
       },

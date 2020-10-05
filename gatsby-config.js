@@ -13,6 +13,7 @@ module.exports = {
     author: {
       name: `hsblock`,
       summary: `front-end programmer`,
+      github: `https://github.com/hsblock`,
     },
   },
   plugins: [

@@ -225,6 +225,7 @@ export const globalStyles = t => {
     h1: {
       fontSize: t.fontSizes[7],
       fontWeight: t.fontWeights.semibold,
+      margin: `${t.space[2]} 0 ${t.space[4]}`
     },
     "h1, h2, h3, h4, h5, h6": {
       color: t.colors.heading,

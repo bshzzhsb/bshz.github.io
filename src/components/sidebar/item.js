@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import React from "react"
 
 import ItemLink from "./item-link"
@@ -22,7 +24,25 @@ const Item = ({ item }) => {
     return <Accordion itemRef={itemRef} item={item} />
   } else {
     return (
-      <li ref={itemRef}>
+      <li
+        ref={itemRef}
+        sx={{
+          position: `relative`,
+          transition: t => `all ${t.transition.speed.fast} ${t.transition.curve.default}`,
+          ...(item.level === 0 && {
+            "&::before": {
+              content: `''`,
+              position: `absolute`,
+              borderTopWidth: `1px`,
+              borderTopStyle: `solid`,
+              borderColor: t => `${t.colors.ui.border.subtle}`,
+              left: isActive ? 0 : 6,
+              right: 0,
+              top: 0,
+            },
+          })
+        }}
+      >
         <ItemLink item={item} />
       </li>
     )
