@@ -78,6 +78,29 @@ function Search({ indices, collapse, hitsAsGrid }) {
             p: `0.7rem  1rem 0.4rem`,
             bg: t => t.colors.white,
             borderRadius: `4px`,
+            "& li + li": {
+              mt: t => t.space[2],
+              pt: t => t.space[2],
+              borderTop: t => `${t.borders[1]} ${t.colors.grey[60]}`,
+            },
+            "& *": {
+              m: 0,
+              p: 0,
+            },
+            "& ul": {
+              listStyle: `none`,
+              my: t => t.space[2],
+              ml: t => t.space[2],
+            },
+            "& mark": {
+              bg: `yellow`,
+            },
+            "& h3": {
+              mb: t => t.space[2],
+            },
+            "& h4": {
+              mb: t => t.space[1],
+            },
           }}
         >
           {indices.map(({ name, title, hitComp}) => (
@@ -94,7 +117,7 @@ function Search({ indices, collapse, hitsAsGrid }) {
               lineHeight: `30px`,
               height: `30px`,
               color: t => t.colors.text,
-              borderTop: t => `2px solid ${t.colors.ui.border}`,
+              borderTop: t => `${t.borders[2]} ${t.colors.ui.border.subtle}`,
             }}
           >
             <a href="https://algolia.com" target="_blank" rel="noreferrer">

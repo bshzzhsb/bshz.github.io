@@ -1,8 +1,8 @@
 {
   "name": "gatsby-blog",
   "private": false,
-  "description": "blog build with gatsby",
-  "version": "0.1.0",
+  "description": "There are things about Machine Learning, Deep Learning, Front-End and anything I am interested in.",
+  "version": "1.0.0",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
