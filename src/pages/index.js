@@ -8,6 +8,7 @@ import Link from "../components/link"
 import HomeItemList from "../components/home/home-item-list"
 import homeItems from "../data/home-items"
 import SEO from "../components/seo"
+import BlogCalendar from "../components/blog-calendar"
 
 export default function Home({ location }) {
   return (
@@ -29,6 +30,7 @@ export default function Home({ location }) {
             <FcLink/>
           </Link>
         </h4>
+        <BlogCalendar />
         <HomeItemList homeItems={homeItems} />
       </div>
     </Layout>
