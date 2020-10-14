@@ -2,6 +2,8 @@
 import { jsx } from "theme-ui"
 import React from "react"
 
+import Tooltip from "./tooltip"
+
 function getDayOfYear(year, month = 12, day = 0) {
   let days = 0;
   for (let i = 1; i <= month; i++) {
@@ -32,14 +34,36 @@ const getYearDates = (year, preOffset, arr) => {
   }
 }
 
-function Calendar({ blogs, commits, cb, year = new Date().getFullYear() }) {
+function Calendar({ blogs, commits, year = new Date().getFullYear() }) {
   const dates = React.useRef();
+  const [content, setContent] = React.useState('');
+  const [top, setTop] = React.useState(0);
+  const [left, setLeft] = React.useState(0);
+
   React.useEffect(() => {
     const datesEl = dates.current;
     const showTooltip = (e) => {
       if (e.target.tagName === 'DIV' && e.target.dataset !== undefined) {
         const { top, left, width, height } = e.target.getBoundingClientRect();
-        console.log(e.target.dataset.index)
+        let content = {};
+        const index = e.target.dataset.index;
+        if (arr[index].blogs) {
+          content.blogs = arr[index].blogs.reduce((dayBlogs, blog) => {
+            let obj = {};
+            obj.title = blog.title;
+            obj.slug = blog.slug;
+            dayBlogs.push(obj);
+            return dayBlogs
+          }, [])
+        }
+        if (arr[index].commits) {
+          let len = arr[index].commits.length;
+          content.commits = `${len} commit${len > 1 ? 's' : ''}`;
+        }
+        content.date = arr[index].date;
+        setContent(content);
+        setTop(top);
+        setLeft(left);
       }
     }
     datesEl.addEventListener("mouseover", showTooltip)
@@ -86,74 +110,77 @@ function Calendar({ blogs, commits, cb, year = new Date().getFullYear() }) {
   getYearDates(year, preOffset, arr);
 
   return (
-    <ul
-      ref={dates}
-      sx={{
-        listStyle: `none`,
-        display: `flex`,
-        // justifyContent: `flex-end`,
-        flexDirection: `column`,
-        height: t => `calc(${t.space[4]} * 7)`,
-        flexWrap: `wrap`,
-        overflow: `scroll`,
-        m: 0,
-        pt: t => t.space[4],
-        scrollbarWidth: `none`,
-        boxSizing: `content-box`,
-      }}
-    >
-      {week.map((item, index) => (
-        <li
-          key={index}
-          sx={{
-            width: t => t.space[6],
-            height: t => item ? t.space[4] : t.space[3],
-            fontSize: t => t.fontSizes[0],
-            m: item ? `0` : `2px`,
-          }}
-        >
-          {item}
-        </li>
-      ))}
-      {arr.map((item, index) => (
-        <li
-          key={index}
-          sx={{
-            position: `relative`,
-            "&::before": Math.floor(index / 7) === Math.floor(firstDaysOfMonth[0] / 7) && firstDaysOfMonth.shift() && {
-              content: `'${new Date(year, 11 - firstDaysOfMonth.length, 1).toDateString().split(" ")[1]}'`,
-              position: `absolute`,
-              top: t => `-${t.space[5]}`,
-              left: t => `calc(${t.space[1]} / 2)`,
-              fontSize: t => t.fontSizes[0],
-            },
-          }}
-        >
-          <div
-            data-index={index}
+    <React.Fragment>
+      <ul
+        ref={dates}
+        sx={{
+          listStyle: `none`,
+          display: `flex`,
+          // justifyContent: `flex-end`,
+          flexDirection: `column`,
+          height: t => `calc(${t.space[4]} * 7)`,
+          flexWrap: `wrap`,
+          overflow: `scroll`,
+          m: 0,
+          pt: t => t.space[4],
+          scrollbarWidth: `none`,
+          boxSizing: `content-box`,
+        }}
+      >
+        {week.map((item, index) => (
+          <li
+            key={index}
             sx={{
-              backgroundColor: t => arr[index].blogs || arr[index].commits
-                ? arr[index].blogs
-                  ? arr[index].commits
-                    ? t.colors.green[60]
-                    : t.colors.green[20]
-                  : arr[index].commits.length > 5
-                    ? t.colors.blue[60]
-                    : arr[index].commits.length > 2
-                      ? t.colors.blue[40]
-                      : t.colors.blue[20]
-                : t.colors.grey[10],
-              width: t => t.space[3],
-              height: t => t.space[3],
-              m: t => `calc(${t.space[1]} / 2)`,
-              boxSizing: `border-box`,
-              border: t => `${t.borders[1]} ${t.colors.grey[20]}`,
-              borderRadius: `1px`,
+              width: t => t.space[6],
+              height: t => item ? t.space[4] : t.space[3],
+              fontSize: t => t.fontSizes[0],
+              m: item ? `0` : `2px`,
             }}
-          />
-        </li>
-      ))}
-    </ul>
+          >
+            {item}
+          </li>
+        ))}
+        {arr.map((item, index) => (
+          <li
+            key={index}
+            sx={{
+              position: `relative`,
+              "&::before": Math.floor(index / 7) === Math.floor(firstDaysOfMonth[0] / 7) && firstDaysOfMonth.shift() && {
+                content: `'${new Date(year, 11 - firstDaysOfMonth.length, 1).toDateString().split(" ")[1]}'`,
+                position: `absolute`,
+                top: t => `-${t.space[5]}`,
+                left: t => `calc(${t.space[1]} / 2)`,
+                fontSize: t => t.fontSizes[0],
+              },
+            }}
+          >
+            <div
+              data-index={index}
+              sx={{
+                backgroundColor: t => arr[index].blogs || arr[index].commits
+                  ? arr[index].blogs
+                    ? arr[index].commits
+                      ? t.colors.green[60]
+                      : t.colors.green[20]
+                    : arr[index].commits.length > 5
+                      ? t.colors.blue[60]
+                      : arr[index].commits.length > 2
+                        ? t.colors.blue[40]
+                        : t.colors.blue[20]
+                  : t.colors.grey[10],
+                width: t => t.space[3],
+                height: t => t.space[3],
+                m: t => `calc(${t.space[1]} / 2)`,
+                boxSizing: `border-box`,
+                border: t => `${t.borders[1]} ${t.colors.grey[20]}`,
+                borderRadius: `1px`,
+              }}
+            />
+          </li>
+        ))}
+      </ul>
+      <Tooltip content={content} top={top} left={left} />
+    </React.Fragment>
   )
 }
 

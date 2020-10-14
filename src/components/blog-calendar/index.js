@@ -6,11 +6,6 @@ import { graphql, useStaticQuery } from "gatsby"
 import Calendar from "./calendar"
 
 function BlogCalendar() {
-  const calendar = React.useRef();
-  const showTooltip = () => {
-    console.log(calendar.current)
-  }
-
   const { allMdx: data, allCommitsYaml: { edges: commitNodes } } = useStaticQuery(
     graphql`
       query {
@@ -45,8 +40,6 @@ function BlogCalendar() {
     `
   )
 
-  console.log(commits)
-
   const [year, setYear] = React.useState(new Date().getFullYear())
 
   let blogs = [];
@@ -70,9 +63,7 @@ function BlogCalendar() {
   }
 
   return (
-    <div
-      ref={calendar}
-    >
+    <div>
       <div
         sx={{
           border: t => `${t.borders[1]} ${t.colors.blackFade[20]}`,
@@ -83,7 +74,7 @@ function BlogCalendar() {
         }}
       >
         <div>{year}</div>
-        <Calendar blogs={blogs} commits={commits} cb={showTooltip} />
+        <Calendar blogs={blogs} commits={commits} />
       </div>
     </div>
   )
