@@ -17,6 +17,14 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -58,7 +66,6 @@ module.exports = {
       options: {},
     },
     `gatsby-plugin-theme-ui`,
-    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-plugin-algolia`,
       options: {

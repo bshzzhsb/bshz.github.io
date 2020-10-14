@@ -2,7 +2,7 @@
   "name": "gatsby-blog",
   "private": false,
   "description": "There are things about Machine Learning, Deep Learning, Front-End and anything I am interested in.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
