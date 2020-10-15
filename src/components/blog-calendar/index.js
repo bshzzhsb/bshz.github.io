@@ -32,7 +32,6 @@ function BlogCalendar() {
               id
               date
               message
-              version
             }
           }
         }
@@ -66,14 +65,20 @@ function BlogCalendar() {
     <div>
       <div
         sx={{
+          height: t => t.space[8],
+          lineHeight: t => t.space[8],
+        }}
+      >
+        {`${year} contributions`}
+      </div>
+      <div
+        sx={{
           border: t => `${t.borders[1]} ${t.colors.blackFade[20]}`,
           borderRadius: t => t.space[4],
           px: t => t.space[6],
-          py: t => t.space[4],
           overflow: `hidden`,
         }}
       >
-        <div>{year}</div>
         <Calendar blogs={blogs} commits={commits} />
       </div>
     </div>

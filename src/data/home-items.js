@@ -16,7 +16,7 @@ const homeItems = [
   },
   {
     name: `Issue`,
-    description: `If you find something wrong, you can create a issue <a target="_blank" href="https://www.github.com/hsblock/hsblock.github.io">there</a>`,
+    description: `If you find something wrong, you can create an issue <a target="_blank" href="https://www.github.com/hsblock/hsblock.github.io">there</a>`,
     type: `Explore`
   },
 ]
