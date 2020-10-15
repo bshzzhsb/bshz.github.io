@@ -44,3 +44,5 @@
   message: "feat: 完善 blog calendar tooltip"
 - date: 2020-10-15
   message: "feat: 完成 blog calendar"
+- date: 2020-10-15
+  message: "release: v1.1.0"
