@@ -48,3 +48,5 @@
   message: "release: v1.1.0"
 - date: 2020-10-18
   message: "perf: 优化 warning"
+- date: 2020-10-18
+  message: "feat: 添加 blog image"

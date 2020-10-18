@@ -67,7 +67,7 @@ export const pageQuery = graphql`
             date
             image {
               id
-              relativePath
+              publicURL
             }
           }
         }

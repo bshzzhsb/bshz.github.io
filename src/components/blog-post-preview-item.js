@@ -17,7 +17,19 @@ const BlogPostPreviewItem = ({ post, className }) => {
     <article
       className={className}
       sx={{
-        position: `relative`
+        position: `relative`,
+        "&:before": {
+          content: `''`,
+          position: `absolute`,
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+          backgroundImage: `url("${post.frontmatter.image && post.frontmatter.image.publicURL}")`,
+          backgroundPosition: `center`,
+          backgroundSize: `cover`,
+          opacity: 0.3,
+        },
       }}
     >
       <Link to={post.fields.slug} sx={{ "&&": t => t.colors.text.header }}>
@@ -37,8 +49,8 @@ const BlogPostPreviewItem = ({ post, className }) => {
             fontFamily: t => t.fonts.dancingScript
           }}
         >
-        {formatDate(post.frontmatter.date)}
-      </span>
+          {formatDate(post.frontmatter.date)}
+        </span>
         <p>{post.fields.excerpt}</p>
       </Link>
       <Link
