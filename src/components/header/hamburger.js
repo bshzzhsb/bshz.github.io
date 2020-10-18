@@ -22,7 +22,7 @@ function Hamburger({ showSidebar, setShowSidebar }) {
         mx: `1rem`,
         [mediaQueries.md]: {
           display: `none`,
-        }
+        },
       }}
     >
       <div
@@ -37,6 +37,7 @@ function Hamburger({ showSidebar, setShowSidebar }) {
           float: `right`
         }}
         onClick={() => setShowSidebar(!showSidebar)}
+        aria-hidden="true"
       >
         <div
           sx={{

@@ -6,7 +6,6 @@ import Hamburger from "./hamburger"
 import Breadcrumb from "./breadcrumb"
 import Search from "../search"
 import config from "../../../config"
-import Link from "../link"
 import useSiteMetadata from "../../hooks/use-site-metadata"
 
 const searchIndices = [
@@ -46,6 +45,7 @@ function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, overrideCSS})
         <a
           href={github}
           target="_blank"
+          rel="noreferrer"
           sx={{
             mx: t => t.space[4],
           }}

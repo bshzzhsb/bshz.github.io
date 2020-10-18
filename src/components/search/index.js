@@ -27,9 +27,7 @@ function Search({ indices, collapse, hitsAsGrid }) {
 
   const events = [`mousedown`, `touchstart`];
   const detectClickOutside = event => {
-    console.log(event, ref)
     if (ref && ref.current && !ref.current.contains(event.target)) {
-      console.log("false");
       setFocus(false);
     }
   }

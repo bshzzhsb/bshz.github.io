@@ -5,7 +5,6 @@ import { useLocation } from "@reach/router"
 import useSiteMetadata from "../hooks/use-site-metadata"
 
 function SEO({ description, title, article }) {
-  console.log(title);
   const siteMetadata = useSiteMetadata()
   const location = useLocation()
 

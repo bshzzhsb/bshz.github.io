@@ -76,6 +76,7 @@ const Title = ({ item, uid }) => {
         },
       }}
       onClick={() => onSectionTitleClick(item)}
+      aria-hidden="true"
     >
       <SectionHeading item={item}>
         { item.title }
@@ -121,6 +122,8 @@ const SplitTitle = ({ itemRef, item, uid }) => {
         aria-controls={uid}
         aria-expanded={isExpanded}
         aria-label={isExpanded ? `${item.title} collapse` : `${item.title} expand`}
+        onClick={() => onSectionTitleClick(item)}
+        aria-hidden="true"
         sx={{
           position: `absolute`,
           ml: `auto`,
@@ -138,7 +141,6 @@ const SplitTitle = ({ itemRef, item, uid }) => {
             },
           },
         }}
-        onClick={() => onSectionTitleClick(item)}
       >
         <Chevron isExpanded={isExpanded} />
       </div>

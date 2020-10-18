@@ -6,7 +6,6 @@ import Highlight, { defaultProps } from "prism-react-renderer"
 import Copy from "./copy"
 
 function CodeBlock({ children: { props: { children, className, title }}}) {
-  console.log(children, className, title)
   const language = className.replace(/language-/, '');
 
   return (

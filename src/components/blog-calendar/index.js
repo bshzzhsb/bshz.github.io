@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Calendar from "./calendar"
@@ -39,7 +38,7 @@ function BlogCalendar() {
     `
   )
 
-  const [year, setYear] = React.useState(new Date().getFullYear())
+  const year = new Date().getFullYear();
 
   let blogs = [];
   for (const edge of data.edges) {

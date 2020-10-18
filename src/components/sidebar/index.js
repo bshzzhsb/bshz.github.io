@@ -6,10 +6,6 @@ import Sidebar from "./sidebar"
 import { mediaQueries } from "../../utils/styles/bshz-design-tokens"
 
 class StickyResponsiveSidebar extends React.Component {
-  constructor(props) {
-    super(props)
-    console.log(props)
-  }
 
   render() {
     return (

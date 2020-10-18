@@ -8,7 +8,6 @@ import { themedInput } from "../../utils/styles"
 const debounce = (refine) => {
   let timer = null;
   return function(value) {
-    console.log(value);
     clearTimeout(timer)
     timer = setTimeout(() => {
       refine.call(this, value)

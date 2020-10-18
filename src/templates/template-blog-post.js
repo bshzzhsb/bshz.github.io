@@ -15,13 +15,11 @@ class BlogPostTemplate extends React.Component {
       pageContext: { prev, next },
       data: { mdx: post, site },
     } = this.props
-    console.log(site)
     const disqusConfig = {
       url: `${site.siteMetadata.siteUrl+post.fields.slug}`,
       identifier: post.id,
       title: post.frontmatter.title,
     }
-    console.log(disqusConfig)
 
     return (
       <Layout

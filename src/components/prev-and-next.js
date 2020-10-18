@@ -3,7 +3,6 @@ import { jsx } from "theme-ui"
 import { MdArrowBack, MdArrowForward } from "react-icons/all"
 
 import Link from "./link"
-import { mediaQueries } from "../utils/styles/bshz-design-tokens"
 
 const prevNextLinkStyles = {
   color: t => t.colors.blue[50],

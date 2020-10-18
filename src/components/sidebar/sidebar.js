@@ -3,7 +3,6 @@ import { jsx } from "theme-ui"
 import React from "react"
 
 import Item from "./item"
-import Link from "../link"
 import getActiveItemParents from "../../utils/sidebar/get-active-item-parents"
 import getActiveItem from "../../utils/sidebar/get-active-item"
 
@@ -12,7 +11,6 @@ function isItemInActiveTree(item, activeItem, activeItemParents) {
 }
 
 function getOpenItemHash(itemList, activeItem, activeItemParents) {
-  console.log(itemList);
   let result = {};
   for (let item of itemList) {
     if (item.items) {
@@ -38,7 +36,6 @@ function Sidebar({ mdxTitle, location, itemList }) {
     () => getActiveItem(itemList, location),
     [itemList, location]
   )
-  console.log(activeItem);
 
   const activeItemParents = React.useMemo(
     () => getActiveItemParents(itemList, activeItem),
@@ -46,7 +43,6 @@ function Sidebar({ mdxTitle, location, itemList }) {
   )
 
   const initialHash = getOpenItemHash(itemList, activeItem, activeItemParents);
-  console.log(initialHash);
   const [openSectionHash, setOpenSectionHash] = React.useState(initialHash);
 
   const toggleSection = React.useCallback(item => {

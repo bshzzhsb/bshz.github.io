@@ -36,7 +36,6 @@ function ItemLink({ item, overrideCSS }) {
             ...(inActiveTree && {
               color: t => `${t.colors.link.color}`,
               fontWeight: t => `${t.fontWeights.semiBold}`,
-              background: t => `${console.log(t)}`,
             }),
             ...overrideCSS,
           },

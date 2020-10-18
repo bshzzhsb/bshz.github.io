@@ -80,7 +80,6 @@ function Calendar({ blogs, commits, year = new Date().getFullYear() }) {
   getYearDates(year, preOffset, arr);
 
   const today = new Date();
-  console.log(today)
   const todayOfYear = preOffset + getDayOfYear(today.getFullYear(), today.getMonth() + 1, today.getDate());
   arr[todayOfYear - 1].today = true;
 

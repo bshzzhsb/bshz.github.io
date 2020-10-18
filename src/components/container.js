@@ -1,9 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { mediaQueries } from "../utils/styles/bshz-design-tokens"
-
-function Container({ children, withSidebar=true, overrideCSS }) {
+function Container({ children, overrideCSS }) {
   return (
     <div sx={{
       maxWidth: `42rem`,

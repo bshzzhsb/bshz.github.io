@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
+
 import Link from "./link"
 
 const formatDate = dateString => (
@@ -13,7 +13,6 @@ const formatDate = dateString => (
 )
 
 const BlogPostPreviewItem = ({ post, className }) => {
-  console.log(className)
   return (
     <article
       className={className}

@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 import { FcLink } from "react-icons/fc"
 
 import Layout from "../components/layout"

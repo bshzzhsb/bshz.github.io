@@ -35,7 +35,6 @@ const extendItemList = itemList => {
  * @returns 处理后的 item
  */
 const extendSidebarData = item => {
-  console.log(item)
   return {
     title: item[0].title,
     breadcrumbTitle: item[0].breadcrumbTitle,

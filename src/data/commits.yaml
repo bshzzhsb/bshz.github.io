@@ -46,3 +46,5 @@
   message: "feat: 完成 blog calendar"
 - date: 2020-10-15
   message: "release: v1.1.0"
+- date: 2020-10-18
+  message: "perf: 优化 warning"

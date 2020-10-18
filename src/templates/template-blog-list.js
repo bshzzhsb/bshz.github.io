@@ -9,10 +9,6 @@ import Pagination from "../components/pagination"
 import SEO from "../components/seo"
 
 class BlogListTemplate extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props)
-  }
   render() {
     const { edges: allMdx } = this.props.data.allMdx;
 
@@ -69,6 +65,10 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date
+            image {
+              id
+              relativePath
+            }
           }
         }
       }
