@@ -20,13 +20,12 @@ class BlogListTemplate extends React.Component {
             post={node}
             key={node.fields.slug}
             sx={{
-              p: 8,
               mx: 0,
               mb: t => t.space[8],
               boxShadow: t => t.shadows.raised,
               bg: t => t.colors.background,
               borderRadius: `4px`,
-              border: 0,
+              border: `1px solid rgba(46, 41, 51, 0.08)`,
               transition: t =>
                 `transform ${t.transition.default}, box-shadow ${t.transition.default}`,
               "&:hover": {
@@ -65,6 +64,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date
+            type
             image {
               id
               publicURL

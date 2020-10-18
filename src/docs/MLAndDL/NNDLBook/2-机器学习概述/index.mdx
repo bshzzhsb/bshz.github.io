@@ -1,14 +1,16 @@
 ---
 title: 2-机器学习概述
-excerpt: NNDL 2-机器学习概述 习题
+excerpt: 《神经网络与深度学习》第2章（机器学习概述）习题解答
 author: bshz
-date: "2020-06-05"
+date: 2020-06-05
+last-modified: 2020-06-05
+image: ./index.png
 draft: false
 ---
 
 <FAQ title="习题2-1">
 
-分析为什么平方损失函数不适用于分类问题。
+  分析为什么平方损失函数不适用于分类问题。
 
 </FAQ>
 
@@ -16,22 +18,22 @@ draft: false
 2. 在分类问题中，标签都是离散的，而且每个标签之间的距离也没有实际意义，预测值和标签之间的平方差无法反应分类问题的优化程度。
 3. 分类问题的输出在经过sigmoid激活后，平方损失函数容易变成很复杂的非凸函数，不利于优化。
 
-![image](./attachments/2-1.png)
+![image](./2-1.png)
 
 分类问题中一般使用交叉熵作为损失函数。
 
 <FAQ title="习题2-2">
 
-在线性回归中，如果我们给每个样本$(x^{(n)}, y^{(n)})$赋予一个权重$r^{(n)}$，经验风险函数为  
+  在线性回归中，如果我们给每个样本$(x^{(n)}, y^{(n)})$赋予一个权重$r^{(n)}$，经验风险函数为
 
-$$
-R(w)=\frac 12 \sum_{n=1}^Nr^{(n)}(y^{(n)}-w^Tx^{(n)})^2
-$$
+  $$
+  R(w)=\frac 12 \sum_{n=1}^Nr^{(n)}(y^{(n)}-w^Tx^{(n)})^2
+  $$
 
-计算其最优参数$w^*$，并分析权重$r^{(n)}$的作用。
+  计算其最优参数$w^*$，并分析权重$r^{(n)}$的作用。
 
 </FAQ>
-    
+
 
 令$X=\begin{bmatrix}\boldsymbol{x^{(1)}} & \boldsymbol{x^{(2)}} & ... & \boldsymbol{x^{(n)}}\end{bmatrix},\  R=\begin{bmatrix} \sqrt{r^{(1)}} & & & \\ & \sqrt{r^{(2)}} & & & \\ & &  \ddots & \\ & & & \sqrt{r^{(n)}} \end{bmatrix}$
 
@@ -40,7 +42,7 @@ R(w) = \frac 12 ||R(y-X^Tw)||_2^2 \\
 \begin{aligned}
 \frac {\partial{R(w)}}{\partial{w}} &= \frac 12 \frac{\partial{||R(y-X^Tw)||_2^2}}{\partial{w}} \\
 & = XR(y-X^Tw) = 0 \\
-\\ 
+\\
 w^* &= (XRX^T)^{-1}XRy
 \end{aligned}
 $$
@@ -49,7 +51,7 @@ $$
 
 <FAQ title="习题2-3">
 
-证明在线性回归中，如果样本数量$N$小于特征数量$D+1$，则$XX^T$的秩最大为$N$。
+  证明在线性回归中，如果样本数量$N$小于特征数量$D+1$，则$XX^T$的秩最大为$N$。
 
 </FAQ>
 
@@ -60,19 +62,19 @@ $$
 
 <FAQ title="习题2-4">
 
-在线性回归中，验证岭回归的解为结构风险最小化准则下的最小二乘法估计，见公式(2.44)
+  在线性回归中，验证岭回归的解为结构风险最小化准则下的最小二乘法估计，见公式(2.44)
 
-$$
-\begin{aligned}
-R(w) &= \frac 12||y-X^Tw||^2+\frac 12||w||^2 \tag{2.44} \\
-\end{aligned}
-$$
+  $$
+  \begin{aligned}
+  R(w) &= \frac 12||y-X^Tw||^2+\frac 12||w||^2 \tag{2.44} \\
+  \end{aligned}
+  $$
 
-$$
-\begin{aligned}
-w^* &= (XX^T+\lambda I)^{-1}Xy \tag{2.43} \\
-\end{aligned}
-$$
+  $$
+  \begin{aligned}
+  w^* &= (XX^T+\lambda I)^{-1}Xy \tag{2.43} \\
+  \end{aligned}
+  $$
 
 </FAQ>
 
@@ -94,11 +96,11 @@ $$
 
 <FAQ title="习题2-5">
 
-在线性回归中，若假设标签$y \sim {\mathcal N}(w^Tx, \beta)$，并用最大似然估计来优化参数，验证最优参数为公式(2.52)的解。
+  在线性回归中，若假设标签$y \sim {\mathcal N}(w^Tx, \beta)$，并用最大似然估计来优化参数，验证最优参数为公式(2.52)的解。
 
-$$
-w^{ML}=(XX^T)^{-1}Xy \tag{2.52}
-$$
+  $$
+  w^{ML}=(XX^T)^{-1}Xy \tag{2.52}
+  $$
 
 </FAQ>
 
@@ -122,9 +124,9 @@ $$
 
 <FAQ title="习题2-6">
 
-假设有$N$个样本$x^{(1)},x^{(2)},...,x^{(N)}$服从正态分布${\mathcal N}(\mu, \sigma^2)$，其中$\mu$未知。
-1)使用最大似然估计来求解最优参数$\mu^{ML}$；
-2)若参数$\mu$为随机变量，并服从正太分布${\mathcal N}(\mu_0,\sigma_0^2)$，使用最大后验估计来求解最优参数$\mu^{MAP}$。
+  假设有$N$个样本$x^{(1)},x^{(2)},...,x^{(N)}$服从正态分布${\mathcal N}(\mu, \sigma^2)$，其中$\mu$未知。
+  1)使用最大似然估计来求解最优参数$\mu^{ML}$；
+  2)若参数$\mu$为随机变量，并服从正太分布${\mathcal N}(\mu_0,\sigma_0^2)$，使用最大后验估计来求解最优参数$\mu^{MAP}$。
 
 </FAQ>
 
@@ -155,7 +157,7 @@ $$
 
 <FAQ title="习题2-7">
 
-在习题2-6中，证明当$N\to \infty$时，最大后验估计趋向于最大似然估计。
+  在习题2-6中，证明当$N\to \infty$时，最大后验估计趋向于最大似然估计。
 
 </FAQ>
 
@@ -167,11 +169,11 @@ $$
 
 <FAQ title="习题2-8">
 
-验证公式(2.61)。
+  验证公式(2.61)。
 
-$$
-f^*(x) = {\Bbb E}_{y \sim p_r(y|x)}[y] \tag{2.61}
-$$
+  $$
+  f^*(x) = {\Bbb E}_{y \sim p_r(y|x)}[y] \tag{2.61}
+  $$
 
 </FAQ>
 
@@ -222,7 +224,7 @@ $$
 
 <FAQ title="习题2-9">
 
-试分析什么因素会导致模型出现图2.6所示的高偏差和高方差情况。
+  试分析什么因素会导致模型出现图2.6所示的高偏差和高方差情况。
 
 </FAQ>
 
@@ -230,11 +232,11 @@ $$
 
 <FAQ title="习题2-10">
 
-验证公式(2.66)。
+  验证公式(2.66)。
 
-$$
-{\Bbb E}_D[(f_D(x)-f^*(x))^2]=\left( {\Bbb E}_D[f_D(x)]-f^*(x) \right)^2+{\Bbb E}_D[\left( f_D(x)-{\Bbb E}_D[f_D(x)] \right)^2] \tag{2.66}
-$$
+  $$
+  {\Bbb E}_D[(f_D(x)-f^*(x))^2]=\left( {\Bbb E}_D[f_D(x)]-f^*(x) \right)^2+{\Bbb E}_D[\left( f_D(x)-{\Bbb E}_D[f_D(x)] \right)^2] \tag{2.66}
+  $$
 
 </FAQ>
 
@@ -262,7 +264,7 @@ $$
 
 <FAQ title="习题2-11">
 
-分别用一元、二元和三元特征的词袋模型表示文本“我打了张三”和“张三打了我”，分析不同模型的优点。
+  分别用一元、二元和三元特征的词袋模型表示文本“我打了张三”和“张三打了我”，分析不同模型的优点。
 
 </FAQ>
 
@@ -272,7 +274,7 @@ $$
 	x_1=[1\ 1\ 1]^T \\
 	x_2=[1\ 1\ 1]^T
 	$$
-	
+
 	两个文本表示相同，无法表示语序信息。
 
 2. 二元：特征单元有：“\$我”“我打了”“打了张三”“张三#”“\$张三”“张三打了”“打了我”“我#”
@@ -281,7 +283,7 @@ $$
 	x_1=[1\ 1\ 1\ 1\ 0\ 0\ 0\ 0]^T \\
 	x_2=[0\ 0\ 0\ 0\ 1\ 1\ 1\ 1]^T
 	$$
-	
+
 	能够表示相邻两个词之间的语序特征，但向量的大小也会增加。
 
 3. 三元：特征单元有：“\$ \$我”“\$我打了”“我打了张三”“打了张三#”“张三##”“\$ \$张三”“\$张三打了”“张三打了我”“打了我#”“我##”
@@ -290,36 +292,36 @@ $$
 	x_1=[1\ 1\ 1\ 1\ 1\ 0\ 0\ 0\ 0\ 0]^T \\
 	x_2=[0\ 0\ 0\ 0\ 0\ 1\ 1\ 1\ 1\ 1]^T
 	$$
-	
+
 	能表示相邻三个词之间的语序特征。当文本很多时，n越大，向量将会越稀疏。
 
-	
+
 <FAQ title="习题2-12">
 
-对于一个三分类问题，数据集的真实标签和模型的预测标签如下：
+  对于一个三分类问题，数据集的真实标签和模型的预测标签如下：
 
-$$
-\begin{aligned}
-&真实标签 \quad 1 \quad 1 \quad 2 \quad 2 \quad 2 \quad 3 \quad 3 \quad 3 \quad 3 \\
-&预测标签 \quad 1 \quad 2 \quad 2 \quad 2 \quad 3 \quad 3 \quad 3 \quad 1 \quad 2 
-\end{aligned}
-$$
+  $$
+  \begin{aligned}
+  &真实标签 \quad 1 \quad 1 \quad 2 \quad 2 \quad 2 \quad 3 \quad 3 \quad 3 \quad 3 \\
+  &预测标签 \quad 1 \quad 2 \quad 2 \quad 2 \quad 3 \quad 3 \quad 3 \quad 1 \quad 2
+  \end{aligned}
+  $$
 
-分别计算模型的精确率、召回率、F1值以及它们的宏平均和微平均。
+  分别计算模型的精确率、召回率、F1值以及它们的宏平均和微平均。
 
 </FAQ>
-	
+
 精确率：
 
 $$
-P_1=\frac {TP_1}{TP_1+FP_1} =\frac {1}{1+1} =\frac 12,\quad P_2=\frac {TP_2}{TP_2+FP_2} =\frac {2}{2+2} =\frac 12,\quad 
+P_1=\frac {TP_1}{TP_1+FP_1} =\frac {1}{1+1} =\frac 12,\quad P_2=\frac {TP_2}{TP_2+FP_2} =\frac {2}{2+2} =\frac 12,\quad
 P_3=\frac {TP_3}{TP_3+FP_3} =\frac {2}{2+1} =\frac 23 \\
-R_1=\frac {TP_1}{TP_1+FN_1} =\frac {1}{1+1} =\frac 12,\quad 
-R_2=\frac {TP_2}{TP_2+FN_2} =\frac {2}{2+1} =\frac 23,\quad 
+R_1=\frac {TP_1}{TP_1+FN_1} =\frac {1}{1+1} =\frac 12,\quad
+R_2=\frac {TP_2}{TP_2+FN_2} =\frac {2}{2+1} =\frac 23,\quad
 R_3=\frac {TP_3}{TP_3+FN_3} =\frac {2}{2+2} =\frac 12 \\
-F1_1=\frac {2P_1R_1}{P_1+R_1} =\frac 12,\quad 
-F1_2=\frac {2P_2R_2}{P_2+R_2} =\frac 47,\quad 
-F1_3=\frac {2P_3R_3}{P_3+R_3} =\frac 47 
+F1_1=\frac {2P_1R_1}{P_1+R_1} =\frac 12,\quad
+F1_2=\frac {2P_2R_2}{P_2+R_2} =\frac 47,\quad
+F1_3=\frac {2P_3R_3}{P_3+R_3} =\frac 47
 $$
 
 宏平均是每一类的性能指标的算术平均值
@@ -327,7 +329,7 @@ $$
 $$
 P_{macro} = \frac 1C \sum_{c=1}^CP_c = \frac 59 \\
 R_{macro} = \frac 1C \sum_{c=1}^CR_c = \frac 59 \\
-F1_{macro} = \frac {2P_{macro}R_{macro}}{P_{macro}+R_{macro}} = \frac 59 
+F1_{macro} = \frac {2P_{macro}R_{macro}}{P_{macro}+R_{macro}} = \frac 59
 $$
 
 微平均是每一个样本的性能指标的算术平均值

@@ -13,60 +13,113 @@ const formatDate = dateString => (
 )
 
 const BlogPostPreviewItem = ({ post, className }) => {
+  console.log(post, post.frontmatter.type)
   return (
     <article
       className={className}
       sx={{
         position: `relative`,
-        "&:before": {
-          content: `''`,
-          position: `absolute`,
-          top: 0,
-          left: 0,
-          bottom: 0,
-          right: 0,
-          backgroundImage: `url("${post.frontmatter.image && post.frontmatter.image.publicURL}")`,
-          backgroundPosition: `center`,
-          backgroundSize: `cover`,
-          opacity: 0.3,
-        },
+        borderRadius: t => t.space[4],
+        overflow: `hidden`,
+        fontSize: `0rem`,
+        display: `flex`,
+        flexDirection: post.frontmatter.type === "practice" ? `row` : `column`,
       }}
     >
-      <Link to={post.fields.slug} sx={{ "&&": t => t.colors.text.header }}>
-        <h2
+      {post.frontmatter.image && post.frontmatter.type !== "practice" && (
+        <Link
+          to={post.fields.slug}
           sx={{
-            color: t => t.colors.text.header,
+            width: `100%`,
+            height: [`200px`, null, null, null, `250px`],
+            position: `relative`,
             display: `inline-block`,
-            mt: 0,
-            fontFamily: t => t.fonts.noto,
+            "&:before": {
+              content: `''`,
+              position: `absolute`,
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+              backgroundImage: `url("${post.frontmatter.image.publicURL}")`,
+              backgroundPosition: `center`,
+              backgroundSize: `cover`,
+              opacity: 0.8,
+            },
           }}
-        >
-          {post.frontmatter.title}
-        </h2>
-        <span
-          sx={{
-            float: `right`,
-            fontFamily: t => t.fonts.dancingScript
-          }}
-        >
-          {formatDate(post.frontmatter.date)}
-        </span>
-        <p>{post.fields.excerpt}</p>
-      </Link>
-      <Link
+        />
+      )}
+      {post.frontmatter.image && post.frontmatter.type === "practice" && <Link
         to={post.fields.slug}
         sx={{
-          position: `absolute`,
-          top: 0,
-          left: 0,
-          bottom: 0,
-          right: 0,
-          overflow: `hidden`,
-          textIndent: `-100%`
+          width: `40%`,
+          position: `relative`,
+          display: `inline-block`,
+          "&:before": {
+            content: `''`,
+            position: `absolute`,
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+            backgroundImage: `url("${post.frontmatter.image.publicURL}")`,
+            backgroundPosition: `center`,
+            backgroundSize: `cover`,
+            opacity: 0.8,
+          },
+        }}
+      />}
+      <div
+        sx={{
+          p: t => t.space[7],
+          fontSize: `initial`,
         }}
       >
-        Read more
-      </Link>
+        <Link to={post.fields.slug} sx={{ "&&": t => t.colors.text.header }}>
+          <h2
+            sx={{
+              color: t => t.colors.text.header,
+              display: `inline-block`,
+              my: 0,
+              fontFamily: t => t.fonts.noto,
+            }}
+          >
+            {post.frontmatter.title}
+          </h2>
+          <span
+            sx={{
+              float: `right`,
+              fontFamily: t => t.fonts.dancingScript,
+              color: t => t.colors.blackFade[60],
+            }}
+          >
+            {formatDate(post.frontmatter.date)}
+          </span>
+          <p
+            sx={{
+              height: post.frontmatter.type === "practice" && (t => t.space[11]),
+              lineHeight: t => t.space[7],
+              color: t => t.colors.blackFade[60],
+            }}
+          >
+            {post.fields.excerpt}
+          </p>
+        </Link>
+        <Link
+          to={post.fields.slug}
+          sx={{
+            position: `absolute`,
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+            overflow: `hidden`,
+            textIndent: `-100%`
+          }}
+        >
+          Read more
+        </Link>
+      </div>
     </article>
   )
 }
