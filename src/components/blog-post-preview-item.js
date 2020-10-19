@@ -119,6 +119,7 @@ const Note = ({ post, className }) => {
         fontSize: `0rem`,
         display: `flex`,
         flexDirection: `row`,
+        minHeight: `10rem`,
       }}
     >
       <Link

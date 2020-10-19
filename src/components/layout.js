@@ -6,14 +6,14 @@ import { graphql, useStaticQuery } from "gatsby"
 
 import Header from "./header"
 import Footer from "./footer"
-import Container from "./container"
 import StickyResponsiveSidebar from "./sidebar"
 import { globalStyles } from "../utils/styles/global"
 import { getItemList } from "../utils/sidebar/item-list"
 import { mediaQueries } from "../utils/styles/bshz-design-tokens"
 import RightSidebar from "./right-sidebar"
+import MonthCalendar from "./month-calendar"
 
-function Layout({ children, location, mdxTitle, TOC, img, ...props }) {
+function Layout({ children, location, mdxTitle, TOC, img, post, ...props }) {
   const data = useStaticQuery(
     graphql`
       query {
@@ -71,7 +71,7 @@ function Layout({ children, location, mdxTitle, TOC, img, ...props }) {
             mdxTitle={mdxTitle}
             showSidebar={showSidebar}
             sx={{
-              width: [`200px`, null, null, null, `220px`],
+              width: [`200px`, null, null, null, `240px`],
               background: t => t.colors.grey[5],
             }}
           />
@@ -86,41 +86,16 @@ function Layout({ children, location, mdxTitle, TOC, img, ...props }) {
                 pl: `200px`,
               },
               [mediaQueries.lg]: {
-                pl: `220px`,
+                pl: `240px`,
               },
             }}
           >
-            <div
-              sx={{
-                height: `200px`,
-                position: `relative`,
-                "&:before": {
-                  content: `''`,
-                  position: `absolute`,
-                  top: 0,
-                  left: 0,
-                  bottom: 0,
-                  right: 0,
-                  backgroundImage: `url("${img}")`,
-                  backgroundPosition: `center`,
-                  backgroundSize: `cover`,
-                  opacity: 0.8,
-                },
-              }}
-            />
-            <Container
-              withSidebar={props.withSidebar}
-              sx={{
-                bg: t => t.colors.grey[10],
-              }}
-            >
-              <main>{children}</main>
-            </Container>
+            {children}
             <Footer />
           </div>
           <div
             sx={{
-              width: `200px`,
+              width: [`200px`, null, null, null, `240px`],
               background: t => t.colors.grey[5],
               display: `none`,
               pl: t => t.space[2],
@@ -129,13 +104,15 @@ function Layout({ children, location, mdxTitle, TOC, img, ...props }) {
               },
             }}
           >
-            <RightSidebar
-              TOC={TOC}
-              sx={{
-                position: `sticky`,
-                top: `4.2rem`,
-              }}
-            />
+            {TOC
+              ? <RightSidebar
+                  TOC={TOC}
+                  sx={{ position: `sticky`,
+                  top: `4.2rem`,
+                }}
+              />
+              : <MonthCalendar />
+            }
           </div>
         </div>
       </div>

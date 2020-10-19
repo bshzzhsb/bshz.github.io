@@ -10,6 +10,7 @@ const Disqus = ({ disqusConfig }) => (
       borderRadius: t => t.radii[2],
       mt: t => t.space[4],
       p: t => t.space[6],
+      bg: t => t.colors.white,
       "&:after": {
         background: t =>
           `${t.colors.white}

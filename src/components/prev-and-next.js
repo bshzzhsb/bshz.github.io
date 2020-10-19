@@ -30,7 +30,8 @@ const PrevAndNext = ({ prev = null, next = null, ...props }) => {
         display: `flex`,
         justifyContent: `space-between`,
         width: `100%`,
-        my: `2rem`
+        mt: t => t.space[7],
+        mb: t => t.space[4],
       }}
       {...props}
     >

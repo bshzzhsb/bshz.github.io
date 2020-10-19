@@ -8,30 +8,35 @@ import HomeItemList from "../components/home/home-item-list"
 import homeItems from "../data/home-items"
 import SEO from "../components/seo"
 import BlogCalendar from "../components/blog-calendar"
+import Container from "../components/container"
+import MonthCalendar from "../components/month-calendar"
 
 export default function Home({ location }) {
   return (
     <Layout location={location}>
       <SEO />
-      <div>
-        <h1>
-          Welcome!
-        </h1>
-        <h4>Find Your Answer HERE!</h4>
-        <h4>Can't wait to see the blogs? &nbsp;
-          <Link
-            to={`/blog/`}
-            sx={{
-              color: t => t.colors.blue[60]
-            }}
-          >
-            GO
-            <FcLink/>
-          </Link>
-        </h4>
-        <BlogCalendar />
-        <HomeItemList homeItems={homeItems} />
-      </div>
+      <Container>
+        <div>
+          <h1>
+            Welcome!
+          </h1>
+          <h4>Find Your Answer HERE!</h4>
+          <h4>Can't wait to see the blogs? &nbsp;
+            <Link
+              to={`/blog/`}
+              sx={{
+                color: t => t.colors.blue[60]
+              }}
+            >
+              GO
+              <FcLink/>
+            </Link>
+          </h4>
+          <BlogCalendar />
+          <MonthCalendar />
+          <HomeItemList homeItems={homeItems} />
+        </div>
+      </Container>
     </Layout>
   )
 }
