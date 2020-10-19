@@ -11,8 +11,9 @@ import StickyResponsiveSidebar from "./sidebar"
 import { globalStyles } from "../utils/styles/global"
 import { getItemList } from "../utils/sidebar/item-list"
 import { mediaQueries } from "../utils/styles/bshz-design-tokens"
+import RightSidebar from "./right-sidebar"
 
-function Layout({ children, location, mdxTitle, ...props }) {
+function Layout({ children, location, mdxTitle, TOC, img, ...props }) {
   const data = useStaticQuery(
     graphql`
       query {
@@ -89,12 +90,52 @@ function Layout({ children, location, mdxTitle, ...props }) {
               },
             }}
           >
+            <div
+              sx={{
+                height: `200px`,
+                position: `relative`,
+                "&:before": {
+                  content: `''`,
+                  position: `absolute`,
+                  top: 0,
+                  left: 0,
+                  bottom: 0,
+                  right: 0,
+                  backgroundImage: `url("${img}")`,
+                  backgroundPosition: `center`,
+                  backgroundSize: `cover`,
+                  opacity: 0.8,
+                },
+              }}
+            />
             <Container
               withSidebar={props.withSidebar}
+              sx={{
+                bg: t => t.colors.grey[10],
+              }}
             >
               <main>{children}</main>
             </Container>
             <Footer />
+          </div>
+          <div
+            sx={{
+              width: `200px`,
+              background: t => t.colors.grey[5],
+              display: `none`,
+              pl: t => t.space[2],
+              [mediaQueries.lg]: {
+                display: `block`,
+              },
+            }}
+          >
+            <RightSidebar
+              TOC={TOC}
+              sx={{
+                position: `sticky`,
+                top: `4.2rem`,
+              }}
+            />
           </div>
         </div>
       </div>

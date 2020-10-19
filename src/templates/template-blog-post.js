@@ -22,15 +22,23 @@ class BlogPostTemplate extends React.Component {
       identifier: post.id,
       title: post.frontmatter.title,
     }
-    console.log(post)
+    console.log(post.tableOfContents)
 
     return (
       <Layout
         location={this.props.location}
         mdxTitle={post.frontmatter.title}
+        TOC={post.tableOfContents}
+        img={post.frontmatter.image.publicURL}
       >
         <SEO title={post.frontmatter.title} />
-        <article>
+        <article
+          sx={{
+            bg: t => t.colors.white,
+            p: t => t.space[4],
+            borderRadius: t => t.space[4],
+          }}
+        >
           <h1
             sx={{
               fontFamily: t => `${t.fonts.noto}`
@@ -38,11 +46,13 @@ class BlogPostTemplate extends React.Component {
           >
             {post.frontmatter.title}
           </h1>
-          <div sx={{
-            mb: t => t.space[4],
-            fontSize: t => t.fontSizes[1],
-            color: t => t.colors.blackFade[80],
-          }}>
+          <div
+            sx={{
+              mb: t => t.space[4],
+              fontSize: t => t.fontSizes[1],
+              color: t => t.colors.blackFade[80],
+            }}
+          >
             <BiTime className="icon" />
             {formatDate(post.frontmatter.date)}
           </div>
@@ -92,8 +102,11 @@ export const pageQuery = graphql`
         title
         date
         last_modified
+        image {
+          publicURL
+        }
       }
-      tableOfContents
+      tableOfContents(maxDepth: 4)
     }
   }
 `

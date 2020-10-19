@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 import CodeIcon from "../assets/icons/code"
 
 import Link from "./link"
