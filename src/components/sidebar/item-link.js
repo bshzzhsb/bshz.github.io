@@ -50,7 +50,7 @@ function ItemLink({ item, overrideCSS }) {
           "&:before, &:after": {
             content: `''`,
             left: t => (
-              level === 0 || level === 1 ? `calc(${indent}-${t.space[4]})` : `calc(${indent} - ${t.space[6]})`
+              level === 0 || level === 1 ? `calc(${indent}-${t.space[2]})` : `calc(${indent} - ${t.space[4]})`
             ),
             top: `16px`,
             height: `8px`,
@@ -62,14 +62,14 @@ function ItemLink({ item, overrideCSS }) {
             borderRadius: `50%`,
             transform: isActive ? `scale(1)` : `scale(0)`,
             width: `8px`,
-            left: `10px`,
+            left: `0`,
           },
           "&:after": {
             backgroundColor: t => `${t.colors.link.color}`,
             borderTopRightRadius: `4px`,
             borderBottomRightRadius: `4px`,
             opacity: isActive ? 1 : 0,
-            width: isActive ? `20px` : 0,
+            width: isActive ? `10px` : 0,
             left: `0px`,
           }
         }}

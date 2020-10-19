@@ -1,5 +1,22 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap');*/
-/*@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');*/
+@font-face {
+  font-family: noto serif sc;
+  src: url("../assets/fonts/NotoSerifSC/NotoSerifSC-Regular.otf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: noto serif sc;
+  src: url("../assets/fonts/NotoSerifSC/NotoSerifSC-Medium.otf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: noto serif sc;
+  src: url("../assets/fonts/NotoSerifSC/NotoSerifSC-Bold.otf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: Gloria Hallelujah;
+  src: url("../assets/fonts/GloriaHallelujah/GloriaHallelujah-Regular.ttf");
+}
 
 .katex-html {
   overflow-x: auto;
@@ -9,4 +26,10 @@
 }
 .mspace.newline {
   padding: 0.5rem 0;
+}
+
+.icon {
+  vertical-align: middle;
+  position: relative;
+  top: -0.1rem;
 }

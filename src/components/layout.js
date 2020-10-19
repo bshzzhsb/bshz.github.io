@@ -53,8 +53,9 @@ function Layout({ children, location, mdxTitle, ...props }) {
           siteTitle={data.site.siteMetadata.title}
           showSidebar={showSidebar}
           setShowSidebar={setShowSidebar}
-          overrideCSS={{
+          sx={{
             width: [`100%`, `100%`,`100%`, `750px`, `980px`, `1170px`],
+            bg: t => t.colors.grey[5],
           }}
         />
         <div
@@ -68,8 +69,9 @@ function Layout({ children, location, mdxTitle, ...props }) {
             location={location}
             mdxTitle={mdxTitle}
             showSidebar={showSidebar}
-            overrideCSS={{
-              width: `16rem`,
+            sx={{
+              width: [`200px`, null, null, null, `220px`],
+              background: t => t.colors.grey[5],
             }}
           />
           <div
@@ -80,8 +82,11 @@ function Layout({ children, location, mdxTitle, ...props }) {
               flexDirection: `column`,
               justifyContent: `space-between`,
               [mediaQueries.md]: {
-                pl: `16rem`,
-              }
+                pl: `200px`,
+              },
+              [mediaQueries.lg]: {
+                pl: `220px`,
+              },
             }}
           >
             <Container

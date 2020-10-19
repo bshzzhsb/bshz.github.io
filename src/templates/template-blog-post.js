@@ -3,11 +3,13 @@ import { jsx } from "theme-ui"
 import React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { BiTime } from "react-icons/all"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Disqus from "../components/disqus"
 import PrevAndNext from "../components/prev-and-next"
+import formatDate from "../utils/get-locale-date"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -20,6 +22,7 @@ class BlogPostTemplate extends React.Component {
       identifier: post.id,
       title: post.frontmatter.title,
     }
+    console.log(post)
 
     return (
       <Layout
@@ -36,20 +39,22 @@ class BlogPostTemplate extends React.Component {
             {post.frontmatter.title}
           </h1>
           <div sx={{
-            fontFamily: t => `${t.fonts.dancingScript}`,
             mb: t => t.space[4],
+            fontSize: t => t.fontSizes[1],
+            color: t => t.colors.blackFade[80],
           }}>
-            {site.siteMetadata.author.name} &nbsp; {post.frontmatter.date}
+            <BiTime className="icon" />
+            {formatDate(post.frontmatter.date)}
           </div>
           <section>
             <MDXRenderer>{ post.body }</MDXRenderer>
             {post.frontmatter.last_modified &&
               <p sx={{
                 textAlign: `right`,
-                fontSize: `0.8rem`,
-                fontFamily: t => `${t.fonts.dancingScript}`,
+                fontSize: t => t.fontSizes[1],
+                color: t => t.colors.blackFade[80],
               }}>
-                {`last modified ${post.frontmatter.last_modified}`}
+                {`最后修改于${formatDate(post.frontmatter.last_modified)}`}
               </p>
             }
           </section>
@@ -85,8 +90,8 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        date(formatString: "MMMM Do YYYY")
-        last_modified(formatString: "MMMM Do YYYY")
+        date
+        last_modified
       }
       tableOfContents
     }

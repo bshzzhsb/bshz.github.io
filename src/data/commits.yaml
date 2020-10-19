@@ -50,3 +50,5 @@
   message: "perf: 优化 warning"
 - date: 2020-10-18
   message: "feat: 添加 blog image"
+- date: 2020-10-19
+  message: "feat: blog list image"

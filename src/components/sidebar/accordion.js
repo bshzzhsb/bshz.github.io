@@ -23,7 +23,7 @@ function Accordion({ itemRef, item }) {
             borderTopWidth: `1px`,
             borderTopStyle: `solid`,
             borderColor: t => `${t.colors.ui.border.subtle}`,
-            left: isExpanded && inActiveTree ? 0 : 6,
+            left: isExpanded && inActiveTree ? 0 : 4,
             right: 0,
             top: 0,
           },

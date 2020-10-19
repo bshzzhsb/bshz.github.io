@@ -16,11 +16,12 @@ const searchIndices = [
   }
 ]
 
-function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, overrideCSS}) {
+function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, className}) {
   const { author: { github } } = useSiteMetadata()
 
   return (
     <header
+      className={className}
       sx={{
         backgroundColor: t => `${t.colors.background}`,
         height: `3.2rem`,
@@ -31,7 +32,6 @@ function Header({siteTitle, mdxTitle, showSidebar, setShowSidebar, overrideCSS})
         alignItems: `center`,
         justifyContent: `space-between`,
         boxShadow: `0 1px 5px 1px rgba(0,0,0,.05)`,
-        ...overrideCSS,
       }}
     >
       <Breadcrumb siteTitle={siteTitle} mdxTitle={mdxTitle} />

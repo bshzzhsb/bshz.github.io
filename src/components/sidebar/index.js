@@ -10,6 +10,7 @@ class StickyResponsiveSidebar extends React.Component {
   render() {
     return (
       <div
+        className={this.props.className}
         sx={{
           borderStyle: `none solid none none`,
           borderWidth: `0 1px 0 0`,
@@ -33,7 +34,6 @@ class StickyResponsiveSidebar extends React.Component {
             transform: `none`,
             boxShadow: `none`,
           },
-          ...this.props.overrideCSS
         }}
       >
         <div

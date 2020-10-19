@@ -51,6 +51,7 @@ const Input = connectSearchBox(({ refine, ...rest }) => {
             ...themedInput,
             pl: `2rem`,
             width: [`100%`, null, null, focused ? `14rem` : `2rem`, `100%`],
+            bg: t => t.colors.grey[5],
             transition: t =>
               `width ${t.transition.speed.default} ${t.transition.curve.default},
               padding ${t.transition.speed.default} ${t.transition.curve.default}`
