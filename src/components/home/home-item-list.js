@@ -4,17 +4,15 @@ import React from "react"
 import { FcMusic } from "react-icons/all"
 
 import HomeItem from "./home-item"
-import { mediaQueries } from "../../utils/styles/bshz-design-tokens"
 
 const HomeItemList = ({ homeItems }) => (
   <React.Fragment>
-    <h3>
+    <h3 sx={{my: t => t.space[4]}}>
       <FcMusic/>
-      There are things about
+      About
     </h3>
     <div
       sx={{
-        margin: t => `0 -${t.space[4]}`,
         overflowX: `scroll`,
         WebkitOverflowScrolling: `touch`,
         scrollbarWidth: `none`,
@@ -25,12 +23,11 @@ const HomeItemList = ({ homeItems }) => (
     >
       <ul
         sx={{
-          display: `inline-flex`,
-          p: t => `${t.space[2]} ${t.space[4]}`,
+          display: `flex`,
+          flexDirection: `column`,
           m: 0,
-          [mediaQueries.lg]: {
-            flexWrap: `wrap`,
-          },
+          pl: t => t.space[2],
+          pr: t => t.space[4],
         }}
       >
         {homeItems.map(item => <HomeItem key={item.name} item={item} />)}

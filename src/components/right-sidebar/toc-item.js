@@ -33,7 +33,8 @@ const TOCItem = ({ item, level = 0 }) => {
             background: t => t.colors.green[60],
           },
         }}
-        onClick={() => {window.scrollTo({top: document.getElementById(item.title).offsetTop, behavior: "smooth"})}}
+        onClick={() => {window.scrollTo({top: document.getElementById(item.title).offsetTop + 115, behavior: "smooth"})}}
+        aria-hidden="true"
       >
         {item.title}
       </span>

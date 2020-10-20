@@ -1,30 +1,12 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { mediaQueries } from "../../utils/styles/bshz-design-tokens"
-
 const HomeItem = ({ item }) => (
   <li
     sx={{
       borderRadius: t => t.radii[2],
-      width: `20rem`,
-      mr: t => t.space[6],
       listStyle: `none`,
-      "&:last-child": {
-        mr: 0,
-      },
-      [mediaQueries.md]: {
-        m: t => `0 ${t.space[6]} ${t.space[6]} 0`,
-      },
-      [mediaQueries.lg]: {
-        flexBasis: `45%`,
-        "&:nth-of-type(3n)": {
-          ml: t => t.space[6],
-        },
-        "&:nth-of-type(4n)": {
-          mr: 0,
-        },
-      },
+      mb: t => t.space[4],
     }}
   >
     <div
@@ -33,7 +15,8 @@ const HomeItem = ({ item }) => (
         flexDirection: `column`,
         height: `100%`,
         position: `relative`,
-        p: t => `${t.space[6]} ${t.space[6]} ${t.space[6]} ${t.space[8]}`,
+        p: t => t.space[2],
+        pl: t => t.space[7],
         boxShadow: t => t.shadows.raised,
         borderRadius: t => t.radii[2],
         cursor: `pointer`,
@@ -87,7 +70,7 @@ const HomeItem = ({ item }) => (
           flex: 1,
           justifyContent: `space-between`,
           fontFamily: t => t.fonts.system,
-          p: t => `${t.space[3]} 0 0`,
+          p: t => `${t.space[2]} 0 0`,
         }}
       >
         <div

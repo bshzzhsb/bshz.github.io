@@ -1,7 +1,7 @@
 const homeItems = [
   {
     name: `What can you find`,
-    description: `Machine Learning, Deep Learning, Front-End and anything I am interested in.`,
+    description: `ML, DL, Front-End and anything I am interested in.`,
     type: `Explore`
   },
   {

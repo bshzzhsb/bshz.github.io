@@ -2,7 +2,6 @@
 import { jsx } from "theme-ui"
 
 function Container({ children, className }) {
-  console.log(children, className)
   return (
     <div
       className={className}

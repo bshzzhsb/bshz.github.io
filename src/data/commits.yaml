@@ -52,3 +52,13 @@
   message: "feat: 添加 blog image"
 - date: 2020-10-19
   message: "feat: blog list image"
+- date: 2020-10-19
+  message: "feat: 完成 blog list image"
+- date: 2020-10-19
+  message: "feat: 添加 blog image 和 toc"
+- date: 2020-10-20
+  message: "feat: 完成 blog image"
+- date: 2020-10-20
+  message: "perf: 优化 month calendar"
+- date: 2020-10-21
+  message: "perf: 优化 right sidebar; 去掉 index 页面"

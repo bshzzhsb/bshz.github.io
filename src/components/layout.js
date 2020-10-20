@@ -12,8 +12,10 @@ import { getItemList } from "../utils/sidebar/item-list"
 import { mediaQueries } from "../utils/styles/bshz-design-tokens"
 import RightSidebar from "./right-sidebar"
 import MonthCalendar from "./month-calendar"
+import HomeItemList from "./home/home-item-list"
+import homeItems from "../data/home-items"
 
-function Layout({ children, location, mdxTitle, TOC, img, post, ...props }) {
+function Layout({ children, location, mdxTitle, TOC }) {
   const data = useStaticQuery(
     graphql`
       query {
@@ -104,14 +106,21 @@ function Layout({ children, location, mdxTitle, TOC, img, post, ...props }) {
               },
             }}
           >
-            {TOC
-              ? <RightSidebar
+            {TOC && Object.keys(TOC).length
+              ? (
+                <RightSidebar
                   TOC={TOC}
                   sx={{ position: `sticky`,
-                  top: `4.2rem`,
-                }}
-              />
-              : <MonthCalendar />
+                    top: `4.2rem`,
+                  }}
+                />
+              )
+              : (
+                <React.Fragment>
+                  <MonthCalendar />
+                  <HomeItemList homeItems={homeItems} />
+                </React.Fragment>
+              )
             }
           </div>
         </div>

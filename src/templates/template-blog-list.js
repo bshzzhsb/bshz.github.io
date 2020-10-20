@@ -15,7 +15,7 @@ class BlogListTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <SEO title={`Blog | Page ${this.props.pageContext.currentPage}`} />
+        <SEO title={this.props.pageContext.currentPage > 1 && `Blog - 第 ${this.props.pageContext.currentPage} 页`} />
         <Container
           sx={{
             bg: t => t.colors.grey[10],
@@ -27,7 +27,7 @@ class BlogListTemplate extends React.Component {
                 post={node}
                 key={node.fields.slug}
                 sx={{
-                  mx: 0,
+                  mx: t => [0, null, null, null, t.space[4]],
                   mt: t => t.space[4],
                   mb: t => t.space[7],
                   boxShadow: t => t.shadows.raised,

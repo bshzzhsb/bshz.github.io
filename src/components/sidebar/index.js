@@ -36,8 +36,7 @@ class StickyResponsiveSidebar extends React.Component {
           },
         }}
       >
-        <div
-        >
+        <div>
           <Sidebar
             {...this.props}
           />

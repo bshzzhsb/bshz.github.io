@@ -83,10 +83,10 @@ function Sidebar({ mdxTitle, location, itemList }) {
         >
           <h3
             sx={{
-              px: `1.5rem`,
+              px: t => t.space[4],
               color: t => `${t.colors.grey[50]}`,
-              fontSize: `14px`,
-              pt: `1rem`,
+              fontSize: t => t.fontSizes[1],
+              pt: t => t.space[4],
               margin: 0,
               fontWeight: t => `${t.fontWeights.body}`,
               textTransform: `uppercase`,

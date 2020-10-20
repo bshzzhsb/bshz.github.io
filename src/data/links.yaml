@@ -2,8 +2,6 @@
   key: docs
   disableAccordions: false
   items:
-    - title: BLOG LIST
-      link: /blog/
     - title: ML and DL
       items:
         - title: NNDL book

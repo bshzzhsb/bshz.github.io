@@ -61,14 +61,19 @@ function MonthCalendar() {
   }
 
   return (
-    <div sx={{px: t => t.space[4],}}>
+    <div
+      sx={{
+        pl: t => t.space[2],
+        pr: t => t.space[4],
+      }}
+    >
       <div
         sx={{
           height: t => t.space[8],
           lineHeight: t => t.space[8],
         }}
       >
-        {`${year} contributions`}
+        {`${new Date().toString().split(" ")[1]} ${year} contributions`}
       </div>
       <div
         sx={{

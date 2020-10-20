@@ -11,7 +11,7 @@ function getDayOfMonth(year, month, day = 0) {
 function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new Date().getMonth() }) {
   let monthDays = getDayOfMonth(year, month);
   let preOffset = new Date(year, month, 1).getDay();
-  let arr = Array.from({length: monthDays}).map(() => new Object());
+  let arr = Array.from({length: monthDays}).map(() => ({}));
   for (let blog of blogs) {
     let date = blog.date;
     if (date[0] === year && date[1] === month + 1) {
@@ -125,7 +125,7 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
                 display: `none`,
                 zIndex: 100,
                 top: t => `-${t.space[8]}`,
-                left: `8px`,
+                left: t => t.space[3],
                 whiteSpace: `nowrap`,
                 transform: `translateX(-50%)`,
                 color: t => t.colors.white,
@@ -169,6 +169,9 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
                   {`${arr[index].commits.length} commit${arr[index].commits.length > 1 ? 's' : ''}`}
                 </span>
               )}
+              <span sx={{color: t => t.colors.whiteFade[60]}}>
+                {index + 1}
+              </span>
             </div>
           </li>
         ))}
