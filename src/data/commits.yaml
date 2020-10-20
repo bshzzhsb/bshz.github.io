@@ -62,3 +62,5 @@
   message: "perf: 优化 month calendar"
 - date: 2020-10-21
   message: "perf: 优化 right sidebar; 去掉 index 页面"
+- date: 2020-10-21
+  message: "release: v1.2.0"

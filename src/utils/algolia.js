@@ -11,7 +11,9 @@ const postQuery = `{
         frontmatter {
           title
           excerpt
-          image
+          image {
+            publicURL
+          }
         }
         internal {
           content
