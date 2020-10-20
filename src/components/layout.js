@@ -95,7 +95,7 @@ function Layout({ children, location, mdxTitle, TOC, img, post, ...props }) {
           </div>
           <div
             sx={{
-              width: [`200px`, null, null, null, `240px`],
+              width: `240px`,
               background: t => t.colors.grey[5],
               display: `none`,
               pl: t => t.space[2],

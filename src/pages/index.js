@@ -9,7 +9,6 @@ import homeItems from "../data/home-items"
 import SEO from "../components/seo"
 import BlogCalendar from "../components/blog-calendar"
 import Container from "../components/container"
-import MonthCalendar from "../components/month-calendar"
 
 export default function Home({ location }) {
   return (
@@ -33,7 +32,6 @@ export default function Home({ location }) {
             </Link>
           </h4>
           <BlogCalendar />
-          <MonthCalendar />
           <HomeItemList homeItems={homeItems} />
         </div>
       </Container>

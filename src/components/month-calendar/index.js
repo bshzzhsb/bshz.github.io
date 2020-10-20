@@ -61,7 +61,7 @@ function MonthCalendar() {
   }
 
   return (
-    <div>
+    <div sx={{px: t => t.space[4],}}>
       <div
         sx={{
           height: t => t.space[8],
@@ -75,7 +75,10 @@ function MonthCalendar() {
           border: t => `${t.borders[1]} ${t.colors.blackFade[20]}`,
           borderRadius: t => t.space[4],
           px: t => t.space[6],
-          overflow: `hidden`,
+          bg: t=> t.colors.white,
+          display: `flex`,
+          flexDirection: `column`,
+          alignItems: `center`,
         }}
       >
         <Calendar blogs={blogs} commits={commits} />

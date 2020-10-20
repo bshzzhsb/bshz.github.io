@@ -8,46 +8,15 @@ function getDayOfMonth(year, month, day = 0) {
   return new Date(year, day === 0 ? month + 1 : month, day).getDate();
 }
 
-const getMonthDates = (year, month, preOffset, arr) => {
-  let index = 0;
-  for (let i = preOffset - 1; i >= 0; i--) {
-    let dateStrs = new Date(year - 1, month - 1 < 0 ? 11 : month - 1, 31 - i).toDateString().split(" ");
-    dateStrs.shift();
-    if (!arr[index]) {
-      arr[index] = {};
-    }
-    arr[index].offset = 20;
-    arr[index++].date = dateStrs.join(" ");
-  }
-  for (let day = 1; day <= new Date(year, month + 1, 0).getDate(); day++) {
-    let dateStrs = new Date(year, month, day).toDateString().split(" ");
-    dateStrs.shift();
-    if (!arr[index]) {
-      arr[index] = {};
-    }
-    if (index / 7 < 2) {
-      console.log(index, "left")
-      arr[index].offset = 20 + (index / 7) * 10;
-    } else if (Math.floor(index / 7) > Math.ceil(arr.length / 7) - 3) {
-      arr[index].offset = 85 - (Math.floor(arr.length / 7) - Math.floor(index / 7)) * 10;
-      console.log(index, "right", arr[index].offset, Math.ceil(arr.length / 7), Math.floor(index / 7))
-    } else {
-      arr[index].offset = 50;
-    }
-    arr[index++].date = dateStrs.join(" ");
-  }
-}
-
 function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new Date().getMonth() }) {
   let monthDays = getDayOfMonth(year, month);
   let preOffset = new Date(year, month, 1).getDay();
-  let arr = Array.from({length: preOffset + monthDays});
+  let arr = Array.from({length: monthDays}).map(() => new Object());
   for (let blog of blogs) {
     let date = blog.date;
     if (date[0] === year && date[1] === month + 1) {
-      let index = getDayOfMonth(date[0], date[1], date[2]) + preOffset;
-      if (!arr[index - 1]) {
-        arr[index - 1] = {};
+      let index = +date[2];
+      if (!arr[index - 1].blogs) {
         arr[index - 1].blogs = [blog];
       } else {
         arr[index - 1].blogs.push(blog);
@@ -55,14 +24,13 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
     }
   }
 
-  let week = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
+  let week = ['', '一', '', '三', '', '五', ''];
 
   for (let commit of commits) {
     let date = commit.date;
     if (date[0] === year && date[1] === month + 1) {
-      let index = getDayOfMonth(date[0], date[1], date[2]) + preOffset;
-      if (!arr[index - 1]) {
-        arr[index - 1] = {};
+      let index = +date[2];
+      if (!arr[index - 1].commits) {
         arr[index - 1].commits = [commit];
       } else if (!arr[index - 1].commits) {
         arr[index - 1].commits = [commit];
@@ -71,11 +39,12 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
       }
     }
   }
-  getMonthDates(year, month, preOffset, arr);
 
   const today = new Date();
-  const todayOfMonth = preOffset + getDayOfMonth(today.getFullYear(), today.getMonth(), today.getDate());
-  arr[todayOfMonth - 1].today = true;
+  const todayOfMonth = today.getDate();
+  if (month === today.getMonth()) {
+    arr[todayOfMonth - 1].today = true;
+  }
 
   return (
     <React.Fragment>
@@ -83,14 +52,12 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
         sx={{
           listStyle: `none`,
           display: `flex`,
-          flexDirection: `column`,
-          height: t => `calc(${t.space[4]} * 7)`,
+          flexDirection: `row`,
+          width: t => `calc(${t.space[6]} * 7)`,
           flexWrap: `wrap`,
-          overflow: `scroll`,
           m: 0,
-          pt: t => t.space[8],
-          pb: t => t.space[2],
-          scrollbarWidth: `none`,
+          pt: t => t.space[4],
+          pb: t => t.space[4],
           boxSizing: `content-box`,
         }}
       >
@@ -98,28 +65,30 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
           <li
             key={index}
             sx={{
-              width: t => t.space[6],
-              height: t => item ? t.space[4] : t.space[3],
+              width: t => t.space[4],
+              height: t => t.space[5],
               fontSize: t => t.fontSizes[0],
-              m: item ? `0` : `2px`,
+              mx: t => t.space[1],
+              mb: t => t.space[1],
             }}
           >
             {item}
           </li>
+        ))}
+        {Array.from({length: preOffset}).map(() => (
+          <li
+            sx={{
+              width: t => t.space[4],
+              height: t => t.space[4],
+              m: t => t.space[1],
+            }}
+          />
         ))}
         {arr.map((item, index) => (
           <li
             key={index}
             sx={{
               position: `relative`,
-              pr: t => Math.floor(index / 7) === Math.floor(arr.length / 7) ? t.space[1] : t.space[0],
-              "&::before": index === 0 && {
-                content: `'${new Date(year, month, 1).toDateString().split(" ")[1]}'`,
-                position: `absolute`,
-                top: t => `-${t.space[5]}`,
-                left: t => `calc(${t.space[1]} / 2)`,
-                fontSize: t => t.fontSizes[0],
-              },
             }}
           >
             <div
@@ -139,9 +108,9 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
                           ? t.colors.blue[40]
                           : t.colors.blue[20]
                     : t.colors.grey[10],
-                width: t => t.space[3],
-                height: t => t.space[3],
-                m: t => `calc(${t.space[1]} / 2)`,
+                width: t => t.space[4],
+                height: t => t.space[4],
+                m: t => t.space[1],
                 boxSizing: `border-box`,
                 border: t => `${t.borders[1]} ${t.colors.grey[20]}`,
                 borderRadius: `1px`,
@@ -158,7 +127,7 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
                 top: t => `-${t.space[8]}`,
                 left: `8px`,
                 whiteSpace: `nowrap`,
-                transform: `translateX(-${arr[index].offset}%)`,
+                transform: `translateX(-50%)`,
                 color: t => t.colors.white,
                 background: t => t.colors.blackFade[80],
                 borderRadius: `5px`,
@@ -174,7 +143,7 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
                   borderWidth: `4px`,
                   borderStyle: `solid`,
                   position: `absolute`,
-                  left: `calc(${arr[index].offset}% - 4px)`,
+                  left: `calc(50% - 4px)`,
                   bottom: `-8px`,
                 },
               }}
@@ -197,16 +166,9 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
               ))}
               {arr[index] && arr[index].commits && (
                 <span sx={{mr: t => t.space[2]}}>
-                      {`${arr[index].commits.length} commit${arr[index].commits.length > 1 ? 's' : ''}`}
-                    </span>
+                  {`${arr[index].commits.length} commit${arr[index].commits.length > 1 ? 's' : ''}`}
+                </span>
               )}
-              <span
-                sx={{
-                  color: t => t.colors.whiteFade[60],
-                }}
-              >
-                {arr[index].date}
-              </span>
             </div>
           </li>
         ))}
