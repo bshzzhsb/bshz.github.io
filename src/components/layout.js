@@ -84,6 +84,7 @@ function Layout({ children, location, mdxTitle, TOC }) {
               display: `flex`,
               flexDirection: `column`,
               justifyContent: `space-between`,
+              bg: t => t.colors.grey[10],
               [mediaQueries.md]: {
                 pl: `200px`,
               },

@@ -57,7 +57,8 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
           flexWrap: `wrap`,
           m: 0,
           pt: t => t.space[4],
-          pb: t => t.space[4],
+          pb: t => t.space[2],
+          alignSelf: `center`,
           boxSizing: `content-box`,
         }}
       >
@@ -178,7 +179,7 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
       </ul>
       <div
         sx={{
-          fontSize: t => t.fontSizes[0],
+          fontSize: t => t.fontSizes[1],
           display: `flex`,
           alignItems: `center`,
           justifyContent: `flex-end`,
@@ -188,8 +189,8 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
         <span
           sx={{
             backgroundColor: t => t.colors.green[20],
-            width: t => t.space[3],
-            height: t => t.space[3],
+            width: t => t.space[4],
+            height: t => t.space[4],
             mr: t => t.space[1],
             boxSizing: `border-box`,
             border: t => `${t.borders[1]} ${t.colors.grey[20]}`,
@@ -201,8 +202,8 @@ function Calendar({ blogs, commits, year = new Date().getFullYear(), month = new
         <span
           sx={{
             backgroundColor: t => t.colors.blue[20],
-            width: t => t.space[3],
-            height: t => t.space[3],
+            width: t => t.space[4],
+            height: t => t.space[4],
             mr: t => t.space[1],
             boxSizing: `border-box`,
             border: t => `${t.borders[1]} ${t.colors.grey[20]}`,

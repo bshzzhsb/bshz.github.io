@@ -16,6 +16,7 @@ const HomeItemList = ({ homeItems }) => (
         overflowX: `scroll`,
         WebkitOverflowScrolling: `touch`,
         scrollbarWidth: `none`,
+        mb: t => t.space[12],
         WebkitScroll: {
           display: `none`,
         },

@@ -83,7 +83,6 @@ function MonthCalendar() {
           bg: t=> t.colors.white,
           display: `flex`,
           flexDirection: `column`,
-          alignItems: `center`,
         }}
       >
         <Calendar blogs={blogs} commits={commits} />
