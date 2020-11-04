@@ -16,6 +16,13 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-175434061-1',
+        head: true,
+      },
+    },
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -92,13 +99,6 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        color: `#3fa9f5`,
-        showSpinner: false,
-      }
-    },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-robots-txt`,
@@ -113,6 +113,17 @@ module.exports = {
       options: {
         shortname: `bshzzhsb`
       }
+    },
+    {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        google: {
+          families: [
+            'Noto Serif SC: 400, 500, 700',
+            'Gloria Hallelujah',
+          ]
+        },
+      },
     },
   ],
 }

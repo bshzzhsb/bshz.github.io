@@ -1,22 +1,22 @@
-@font-face {
-  font-family: noto serif sc;
-  src: url("../assets/fonts/NotoSerifSC/NotoSerifSC-Regular.otf");
-  font-weight: 400;
-}
-@font-face {
-  font-family: noto serif sc;
-  src: url("../assets/fonts/NotoSerifSC/NotoSerifSC-Medium.otf");
-  font-weight: 500;
-}
-@font-face {
-  font-family: noto serif sc;
-  src: url("../assets/fonts/NotoSerifSC/NotoSerifSC-Bold.otf");
-  font-weight: 700;
-}
-@font-face {
-  font-family: Gloria Hallelujah;
-  src: url("../assets/fonts/GloriaHallelujah/GloriaHallelujah-Regular.ttf");
-}
+/*@font-face {*/
+/*  font-family: noto serif sc;*/
+/*  src: url("../assets/fonts/NotoSerifSC/NotoSerifSC-Regular.otf");*/
+/*  font-weight: 400;*/
+/*}*/
+/*@font-face {*/
+/*  font-family: noto serif sc;*/
+/*  src: url("../assets/fonts/NotoSerifSC/NotoSerifSC-Medium.otf");*/
+/*  font-weight: 500;*/
+/*}*/
+/*@font-face {*/
+/*  font-family: noto serif sc;*/
+/*  src: url("../assets/fonts/NotoSerifSC/NotoSerifSC-Bold.otf");*/
+/*  font-weight: 700;*/
+/*}*/
+/*@font-face {*/
+/*  font-family: Gloria Hallelujah;*/
+/*  src: url("../assets/fonts/GloriaHallelujah/GloriaHallelujah-Regular.ttf");*/
+/*}*/
 
 .katex-html {
   overflow-x: auto;

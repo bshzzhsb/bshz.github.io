@@ -9,4 +9,3 @@ If you have any question about building gatsby site or the content in my site, y
 :bookmark_tabs: TODOs:
 
 - tag
-- blog calendar

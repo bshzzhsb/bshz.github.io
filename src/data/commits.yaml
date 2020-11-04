@@ -66,3 +66,5 @@
   message: "release: v1.2.0"
 - date: 2020-10-21
   message: "perf: footer"
+- date: 2020-11-04
+  message: "feat: 添加 google analytics 和 web font loader; perf: 优化了 progress bar"
